@@ -1,0 +1,6 @@
+@EquityAfia.PaymentsAndBillings.Api_HostAddress = http://localhost:5192
+
+GET {{EquityAfia.PaymentsAndBillings.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
