@@ -1,45 +1,92 @@
-﻿// Application/Services/BillingService.cs
-using EquityAfia.PaymentsAndBillings.Application.Interfaces;
+﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using EquityAfia.PaymentsAndBillings.Contracts.Billing;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 
-public class BillingService : IBillingService
+namespace EquityAfia.PaymentsAndBillings.Application.Services
 {
-    public async Task<BillingDto> AddBillingWithServicesAsync(BillingDto billingDto)
+    public class BillingService : IBillingService
     {
-        // Implement the service logic here
+        private readonly IUserService _userService;
+        private readonly IEPharmacyService _ePharmacyService;
+        private readonly IAppointmentService _appointmentService;
+        private readonly IBillingRepository _billingRepository;
 
-        // Example: Map BillingDto to Billing entity, perform business logic, and return result
-        var billing = new Billing
+        public BillingService(
+            IUserService userService,
+            IEPharmacyService ePharmacyService,
+            IAppointmentService appointmentService,
+            IBillingRepository billingRepository)
         {
-            BillingId = billingDto.BillingId,
-            CustomerName = billingDto.CustomerName,
-            CustomerId = billingDto.CustomerId,
-            CustomerEmail = billingDto.CustomerEmail,
-            CustomerPhoneNumber = billingDto.CustomerPhoneNumber,
-            AppointmentId = billingDto.AppointmentId,
-            AmountBilled = billingDto.AmountBilled,
-            PayBill = billingDto.PayBill,
-            AccNo = billingDto.AccNo,
-            PaymentStatus = billingDto.PaymentStatus,
-            Services = billingDto.Services.Select(s => new Service
-            {
-                ServiceId = s.ServiceId,
-                Quantity = s.Quantity,
-                AmountCharged = s.AmountCharged
-            }).ToList(),
-            Products = billingDto.Products.Select(p => new Product
-            {
-                ProductId = p.ProductId,
-                Quantity = p.Quantity,
-                Price = p.Price
-            }).ToList()
-        };
+            _userService = userService;
+            _ePharmacyService = ePharmacyService;
+            _appointmentService = appointmentService;
+            _billingRepository = billingRepository;
+        }
 
-        // Save billing to database (repository pattern could be used here)
-        // Example: await _billingRepository.AddAsync(billing);
+        public async Task<BillingDto> AddBillingWithServicesAsync(BillingDto billingDto)
+        {
+            // Retrieve user details
+            var UserDto = await _userService.GetUserByIdAsync(billingDto.CustomerId);
+            if (UserDto == null)
+            {
+                throw new Exception("User not found");
+            }
 
-        return billingDto;
+            // Retrieve products from E-Pharmacy
+            var products = await _ePharmacyService.GetProductsByCustomerIdAsync(billingDto.CustomerId);
+            // Retrieve appointment charges
+            var charges = await _appointmentService.GetAppointmentChargesByCustomerIdAsync(billingDto.CustomerId);
+
+            // Calculate total amount billed
+            billingDto.AmountBilled = (decimal)(products.Sum(p => p.Price * p.Quantity) + charges.Sum(c => c.Amount));
+
+
+            // Create Billing entity
+            var billing = new Billing
+            {
+                BillingId = billingDto.BillingId,
+                CustomerName = UserDto.Name,
+                CustomerId = billingDto.CustomerId,
+                CustomerEmail = UserDto.Email,
+                CustomerPhoneNumber = UserDto.PhoneNumber,
+                AppointmentId = billingDto.AppointmentId,
+                AmountBilled = (int)billingDto.AmountBilled,
+                PayBill = billingDto.PayBill,
+                AccNo = billingDto.AccNo,
+                PaymentStatus = billingDto.PaymentStatus,
+                Services = billingDto.Services.Select(s => new Service
+                {
+                    ServiceId = s.ServiceId,
+                    Quantity = s.Quantity,
+                    AmountCharged = s.AmountCharged
+                }).ToList(),
+                Products = products.Select(p => new Product
+                {
+                    ProductId = p.ProductId,
+                    Quantity = p.Quantity,
+                    Price = p.Price
+                }).ToList()
+            };
+
+            // Save billing to database
+            await _billingRepository.AddAsync(billing);
+
+            return billingDto;
+        }
+
+        public async Task<UserDto> GetUserByIdAsync(string userId)
+        {
+            // Mock implementation - replace with actual data retrieval logic
+            return await Task.FromResult(new UserDto
+            {
+                UserId = userId,
+                Name = "Test User",
+                Email = "test@example.com",
+                PhoneNumber = "123-456-7890"
+            });
+        }
     }
 }

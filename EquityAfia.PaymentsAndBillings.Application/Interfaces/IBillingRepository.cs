@@ -1,9 +1,11 @@
-﻿// Application/Interfaces/IBillingRepository.cs
+﻿using EquityAfia.PaymentsAndBillings.Contracts.Billing;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
 using System.Threading.Tasks;
 
-public interface IBillingRepository
+namespace EquityAfia.PaymentsAndBillings.Application.Interfaces
 {
-    Task AddAsync(Billing billing);
-    // Other CRUD methods
+    public interface IBillingRepository
+    {
+        Task<Billing> AddAsync(Billing billing);
+    }
 }

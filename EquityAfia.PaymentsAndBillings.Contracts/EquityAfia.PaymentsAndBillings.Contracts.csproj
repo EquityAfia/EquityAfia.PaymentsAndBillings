@@ -25,4 +25,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EquityAfia.PaymentsAndBillings.Domain\EquityAfia.PaymentsAndBillings.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

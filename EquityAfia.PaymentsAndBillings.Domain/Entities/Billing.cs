@@ -23,7 +23,7 @@ namespace EquityAfia.PaymentsAndBillings.Domain.Entities
     {
         public string ServiceId { get; set; }
         public int Quantity { get; set; }
-        public int AmountCharged { get; set; }
+        public decimal AmountCharged { get; set; }
 
         public string BillingId { get; set; }
         public Billing Billing { get; set; }

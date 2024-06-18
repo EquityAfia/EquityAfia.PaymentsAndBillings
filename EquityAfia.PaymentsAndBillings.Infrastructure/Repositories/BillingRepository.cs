@@ -1,23 +1,19 @@
-﻿// Infrastructure/Repositories/BillingRepository.cs
-using EquityAfia.PaymentsAndBillings.Application.Interfaces;
+﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
-using EquityAfia.PaymentsAndBillings.Infrastructure.Data;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
-public class BillingRepository : IBillingRepository
+namespace EquityAfia.PaymentsAndBillings.Infrastructure.Repositories
 {
-    private readonly EquityAfiaDbContext _context;
-
-    public BillingRepository(EquityAfiaDbContext context)
+    public class BillingRepository : IBillingRepository
     {
-        _context = context;
-    }
+        private readonly List<Billing> _billingStore = new List<Billing>();
 
-    public async Task AddAsync(Billing billing)
-    {
-        await _context.Billings.AddAsync(billing);
-        await _context.SaveChangesAsync();
+        public async Task<Billing> AddAsync(Billing billing)
+        {
+            _billingStore.Add(billing);
+            await Task.CompletedTask; // Simulate async operation
+            return billing;
+        }
     }
-
-    // Other CRUD methods
 }

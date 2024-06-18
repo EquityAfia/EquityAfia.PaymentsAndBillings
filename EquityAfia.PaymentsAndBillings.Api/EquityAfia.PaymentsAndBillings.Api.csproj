@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EquityAfia.PaymentsAndBillings.Application\EquityAfia.PaymentsAndBillings.Application.csproj" />
+    <ProjectReference Include="..\EquityAfia.PaymentsAndBillings.Contracts\EquityAfia.PaymentsAndBillings.Contracts.csproj" />
     <ProjectReference Include="..\EquityAfia.PaymentsAndBillings.Infrastructure\EquityAfia.PaymentsAndBillings.Infrastructure.csproj" />
   </ItemGroup>
 
