@@ -6,7 +6,7 @@ using EquityAfia.PaymentsAndBillings.Domain.Entities;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using EquityAfia.PaymentsAndBillings.Infrastructure.Data;
 
-namespace EquityAfia.PaymentsAndBillings.Infrastructure.Repositories
+namespace EquityAfia.PaymentsAndBillings.Infrastructure.Migrations.Repositories
 {
     public class PaymentRepository : IPaymentRepository
     {
@@ -26,10 +26,10 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Repositories
                 .FirstOrDefaultAsync(p => p.TransactionId == transactionId);
         }
 
-        public async Task<Billing> GetBillingByIdOrAppointmentIdAsync(int billingId, string appointmentId)
+        public async Task<Billing> GetBillingByIdOrAppointmentIdAsync(int billingId, int appointmentId)
         {
             return await _context.Billings
-                .FirstOrDefaultAsync(b => b.Id == billingId || b.AppointmentId == appointmentId);
+                .FirstOrDefaultAsync(b => b.BillingId == billingId || b.AppointmentId == appointmentId);
         }
 
         public async Task<decimal> GetTotalPaidAmountByBillingIdAsync(int billingId)

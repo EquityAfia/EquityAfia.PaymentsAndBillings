@@ -3,7 +3,7 @@ using EquityAfia.PaymentsAndBillings.Domain.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace EquityAfia.PaymentsAndBillings.Infrastructure.Repositories
+namespace EquityAfia.PaymentsAndBillings.Infrastructure.Migrations.Repositories
 {
     public class BillingRepository : IBillingRepository
     {

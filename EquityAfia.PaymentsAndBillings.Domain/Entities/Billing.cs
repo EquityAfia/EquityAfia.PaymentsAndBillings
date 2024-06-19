@@ -4,39 +4,39 @@ namespace EquityAfia.PaymentsAndBillings.Domain.Entities
 {
     public class Billing
     {
-        public string BillingId { get; set; }
+        public int BillingId { get; set; } // Primary Key
         public string CustomerName { get; set; }
         public string CustomerId { get; set; }
         public string CustomerEmail { get; set; }
         public string CustomerPhoneNumber { get; set; }
-        public string AppointmentId { get; set; }
+        public int AppointmentId { get; set; }
         public int AmountBilled { get; set; }
         public bool PayBill { get; set; }
         public int AccNo { get; set; }
         public string PaymentStatus { get; set; }
 
+        // Navigation Properties
         public List<Service> Services { get; set; }
         public List<Product> Products { get; set; }
-        public int Id { get; set; }
     }
 
     public class Service
     {
-        public string ServiceId { get; set; }
+        public int ServiceId { get; set; } // Primary Key (assuming)
         public int Quantity { get; set; }
         public decimal AmountCharged { get; set; }
 
-        public string BillingId { get; set; }
+        public int BillingId { get; set; } // Foreign Key
         public Billing Billing { get; set; }
     }
 
     public class Product
     {
-        public string ProductId { get; set; }
+        public int ProductId { get; set; } // Primary Key (assuming)
         public int Quantity { get; set; }
         public int Price { get; set; }
 
-        public string BillingId { get; set; }
+        public int BillingId { get; set; } // Foreign Key
         public Billing Billing { get; set; }
     }
 }

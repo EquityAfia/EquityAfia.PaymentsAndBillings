@@ -18,9 +18,19 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Service>()
+                .HasKey(s => s.ServiceId); // Assuming ServiceId is the primary key
+
+            modelBuilder.Entity<Service>()
+                .Property(s => s.AmountCharged)
+                .HasColumnType("decimal(18, 2)"); // Adjust precision and scale as needed
+
+            modelBuilder.Entity<Service>()
                 .HasOne(s => s.Billing)
                 .WithMany(b => b.Services)
                 .HasForeignKey(s => s.BillingId);
+
+            modelBuilder.Entity<Product>()
+                .HasKey(p => p.ProductId); // Assuming ProductId is the primary key
 
             modelBuilder.Entity<Product>()
                 .HasOne(p => p.Billing)
@@ -29,5 +39,6 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Data
 
             base.OnModelCreating(modelBuilder);
         }
+
     }
 }

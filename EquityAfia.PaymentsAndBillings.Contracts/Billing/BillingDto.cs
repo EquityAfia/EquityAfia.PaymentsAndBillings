@@ -2,12 +2,12 @@
 {
     public record BillingDto
     {
-        public string BillingId { get; init; }
+        public int BillingId { get; init; }
         public string CustomerName { get; init; }
         public string CustomerId { get; init; }
         public string CustomerEmail { get; init; }
         public string CustomerPhoneNumber { get; init; }
-        public string AppointmentId { get; init; }
+        public int AppointmentId { get; init; }
         public decimal AmountBilled { get; set; } // Changed from int to decimal
         public bool PayBill { get; init; }
         public int AccNo { get; init; }
@@ -18,7 +18,7 @@
 
     public record ServiceDto
     {
-        public string ServiceId { get; init; }
+        public int ServiceId { get; init; }
         public int Quantity { get; init; }
         public int AmountCharged { get; init; }
     }

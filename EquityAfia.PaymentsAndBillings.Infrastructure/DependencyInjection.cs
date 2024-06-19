@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using EquityAfia.PaymentsAndBillings.Infrastructure.Data;
-using EquityAfia.PaymentsAndBillings.Infrastructure.Repositories;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using EquityAfia.PaymentsAndBillings.Application.Services;
+using EquityAfia.PaymentsAndBillings.Infrastructure.Migrations.Repositories;
 
 public static class DependencyInjection
 {
@@ -24,6 +24,7 @@ public static class DependencyInjection
         services.AddScoped<IAppointmentService, AppointmentService>();
         services.AddScoped<IPaymentService, PaymentService>();
         services.AddScoped<IPaymentRepository, PaymentRepository>();
+        services.AddScoped<IStripeService, StripeService>();
 
         return services;
     }
