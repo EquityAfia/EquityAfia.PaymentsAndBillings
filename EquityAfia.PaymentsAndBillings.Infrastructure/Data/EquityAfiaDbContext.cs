@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿// Infrastructure/Data/EquityAfiaDbContext.cs
+using Microsoft.EntityFrameworkCore;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
 
 namespace EquityAfia.PaymentsAndBillings.Infrastructure.Data
@@ -12,6 +13,7 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Data
         public DbSet<Billing> Billings { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Payment> Payments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
