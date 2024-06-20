@@ -1,6 +1,7 @@
 ﻿// API/Controllers/BillingAndPaymentController.cs
 using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using EquityAfia.PaymentsAndBillings.Contracts.Billing;
+using EquityAfia.PaymentsAndBillings.Contracts.Payment;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -48,14 +49,14 @@ public class BillingAndPaymentController : ControllerBase
     }
 
     [HttpPost("stripe/create-payment-intent")]
-    public async Task<IActionResult> CreatePaymentIntent([FromBody] CreatePaymentIntentRequest request)
+    public async Task<IActionResult> CreatePaymentIntent([FromBody] CreateStripePaymentIntentRequest request)
     {
         if (request == null)
             return BadRequest("Request data is required");
 
         try
         {
-            var paymentIntent = await _stripeService.CreatePaymentIntent(request.Amount, request.Currency, request.PaymentMethod);
+            var paymentIntent = await _stripeService.CreatePaymentIntent(request.Amount, request.Currency, request.PaymentMethod, request.BillingId, request.CustomerId, request.CustomerName, request.CustomerEmail);
             return Ok(new { paymentIntentId = paymentIntent.Id, clientSecret = paymentIntent.ClientSecret });
         }
         catch (Exception ex)
@@ -65,15 +66,15 @@ public class BillingAndPaymentController : ControllerBase
     }
 
     [HttpPost("stripe/confirm-payment-intent")]
-    public async Task<IActionResult> ConfirmPaymentIntent([FromBody] ConfirmPaymentIntentRequest request)
+    public async Task<IActionResult> ConfirmPaymentIntent([FromBody] ConfirmStripePaymentIntentRequest request)
     {
         if (request == null)
             return BadRequest("Request data is required");
 
         try
         {
-            var paymentIntent = await _stripeService.ConfirmPaymentIntent(request.PaymentIntentId);
-            return Ok(paymentIntent);
+            var paymentIntent = await _stripeService.ConfirmPaymentIntent(request.PaymentIntentId, request.PaymentMethod);
+            return Ok(new { paymentIntentId = paymentIntent.Id, status = paymentIntent.Status });
         }
         catch (Exception ex)
         {
@@ -82,14 +83,4 @@ public class BillingAndPaymentController : ControllerBase
     }
 }
 
-public class CreatePaymentIntentRequest
-{
-    public decimal Amount { get; set; }
-    public string Currency { get; set; }
-    public string PaymentMethod { get; set; }
-}
-
-public class ConfirmPaymentIntentRequest
-{
-    public string PaymentIntentId { get; set; }
-}
+//

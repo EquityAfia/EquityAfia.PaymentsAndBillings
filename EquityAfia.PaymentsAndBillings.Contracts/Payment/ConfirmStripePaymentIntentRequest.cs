@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace EquityAfia.PaymentsAndBillings.Contracts.Payment
 {
-    public class StripeSettings
+    public class ConfirmStripePaymentIntentRequest
     {
-        public string PublishableKey { get; set; }
-        public string SecretKey { get; set; }
+        public string PaymentIntentId { get; set; }
+        public string PaymentMethod { get; set; }
     }
 }

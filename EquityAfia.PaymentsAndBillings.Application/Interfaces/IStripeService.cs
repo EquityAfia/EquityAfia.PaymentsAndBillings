@@ -9,7 +9,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Interfaces
 {
     public interface IStripeService
     {
-        Task<PaymentIntent> CreatePaymentIntent(decimal amount, string currency, string paymentMethod);
-        Task<PaymentIntent> ConfirmPaymentIntent(string paymentIntentId);
+        Task<PaymentIntent> CreatePaymentIntent(decimal amount, string currency, string paymentMethod, int billingId, string customerId, string customerName, string customerEmail);
+        Task<PaymentIntent> ConfirmPaymentIntent(string paymentIntentId, string paymentMethod);
     }
 }
