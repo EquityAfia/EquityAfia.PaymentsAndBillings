@@ -8,7 +8,7 @@ using System.Text;
 
 namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFolder
 {
-    public class StkService : IStkService
+    public class StkService : IStkService//immplementations of methods
     {
         private readonly IConfiguration _configuration;
         private readonly IBillingRepository _billingRepository;
