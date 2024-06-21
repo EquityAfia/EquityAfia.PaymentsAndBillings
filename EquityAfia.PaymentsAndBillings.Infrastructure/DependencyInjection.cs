@@ -10,7 +10,7 @@ using EquityAfia.PaymentsAndBillings.Application.Services.BillingService;
 using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService;
 using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StripeService;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
-using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk_folder;
+using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFolder;
 
 public static class DependencyInjection
 {
@@ -31,7 +31,7 @@ public static class DependencyInjection
         services.AddScoped<IPaymentService, PaymentService>();
         services.AddScoped<IPaymentRepository, PaymentRepository>();
         services.AddScoped<IStripeService, StripeService>();
-        services.AddScoped<IStkService,    stkService>();
+        services.AddScoped<IStkService,    StkService>();
 
         return services;
     }
