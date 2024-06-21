@@ -12,11 +12,5 @@ namespace EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk
     {
         Task<Payment> MakeStkPaymentAsync(int billingId, string mobileNumber);
     }
-    _configuration = configuration;
-    _context = context;
-}
-public async Task<Payment> MakeStkPaymentAsync(int billingId, string mobileNumber)
-{
-    var billing = await _context.Billings.FindAsync(billingId);
-    if (billing == null) throw new Exception("Billing not found");
+    
 }
