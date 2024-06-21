@@ -17,3 +17,4 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
         {
             _configuration = configuration;
             _context = context;
+        }
