@@ -68,7 +68,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 Services = billing.Services,
                 PaymentMethod = "M-Pesa",
                 TransactionId = transactionId,
-
+                PaymentStatus = "Paid"
 
             }
 
