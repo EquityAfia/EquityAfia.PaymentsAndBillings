@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Stripe;
 
-namespace EquityAfia.PaymentsAndBillings.Application.Services
+namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StripeService
 {
     public class StripeService : IStripeService
     {

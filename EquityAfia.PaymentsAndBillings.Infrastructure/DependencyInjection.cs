@@ -8,6 +8,7 @@ using EquityAfia.PaymentsAndBillings.Infrastructure.Migrations.Repositories;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Application.Services.BillingService;
 using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService;
+using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StripeService;
 
 public static class DependencyInjection
 {
