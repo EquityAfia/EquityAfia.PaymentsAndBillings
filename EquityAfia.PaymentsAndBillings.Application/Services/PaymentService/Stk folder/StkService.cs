@@ -53,7 +53,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 PhoneNumber = $"254{phone}",
                 CallBackURL = _configuration["Mpesa:CallbackUrl"],
                 TransactionDesc = "Payment"
-
+            }
 
 
 
