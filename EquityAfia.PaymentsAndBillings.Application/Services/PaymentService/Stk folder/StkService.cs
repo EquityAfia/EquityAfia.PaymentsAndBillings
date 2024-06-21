@@ -51,7 +51,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 PartyA = $"254{phone}",
                 PartyB = shortcode,
                 PhoneNumber = $"254{phone}",
-
+                CallBackURL = _configuration["Mpesa:CallbackUrl"],
 
 
 
