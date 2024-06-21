@@ -33,7 +33,9 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
 
             var tokenResponse = await client.ExecuteAsync<TokenResponse>(tokenRequest);
             if (!tokenResponse.IsSuccessful) throw new Exception("Unable to fetch token");
+
             var token = tokenResponse.Data.AccessToken;
+            var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
 
 
 
