@@ -63,6 +63,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 AmountPaid = amountToPay,
                 CustomerId = billing.CustomerId,
                 CustomerName = billing.CustomerName,
+
             }
 
 
