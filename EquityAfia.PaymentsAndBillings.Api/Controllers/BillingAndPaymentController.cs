@@ -84,14 +84,14 @@ public class BillingAndPaymentController : ControllerBase
     }
 
     [HttpPost("payment/stk/{billingId}")]
-    public async Task<IActionResult> MakeStkPayment(int billingId, [FromBody] StkPaymentRequest request)
+    public async Task<IActionResult> MakeStkPayment(int billingId, [FromBody] StkPayment request)
     {
         if (request == null)
             return BadRequest("Request data is required");
 
         try
         {
-            var payment = await _paymentService.MakeStkPaymentAsync(billingId, request.MobileNumber);
+            var payment = await _stkService.MakeStkPaymentAsync(billingId, request.MobileNumber);
             return Ok(payment);
         }
         catch (Exception ex)

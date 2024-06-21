@@ -29,7 +29,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             var auth = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes($"{consumerKey}:{consumerSecret}"));
 
             var client = new RestClient("https://sandbox.safaricom.co.ke");
-            var tokenRequest = new RestRequest("/oauth/v1/generate?grant_type=client_credentials", Method.GET);
+            var tokenRequest = new RestRequest("/oauth/v1/generate?grant_type=client_credentials", Method.Get);
             tokenRequest.AddHeader("Authorization", $"Basic {auth}");
 
             var tokenResponse = await client.ExecuteAsync<TokenResponse>(tokenRequest);
@@ -40,7 +40,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             var phone = mobileNumber.Length > 1 ? mobileNumber.Substring(1) : mobileNumber;
             var shortcode = _configuration["Mpesa:Paybill"];
             var password = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes($"{shortcode}{passkey}{timestamp}"));
-            var stkPushRequest = new RestRequest("/mpesa/stkpush/v1/processrequest", Method.POST);
+            var stkPushRequest = new RestRequest("/mpesa/stkpush/v1/processrequest", Method.Post);
             stkPushRequest.AddHeader("Authorization", $"Bearer {token}");
             stkPushRequest.AddJsonBody(new
             {
@@ -112,6 +112,6 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
 
 
 
-        }
-    }
-}
+        
+    
+
