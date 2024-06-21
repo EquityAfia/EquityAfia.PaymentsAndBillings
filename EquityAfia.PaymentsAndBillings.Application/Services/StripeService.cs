@@ -1,8 +1,6 @@
 ﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Stripe;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace EquityAfia.PaymentsAndBillings.Application.Services
 {

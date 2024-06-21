@@ -4,8 +4,6 @@ using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Contracts.Billing;
 using EquityAfia.PaymentsAndBillings.Contracts.Payment.Card;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
 
 [ApiController]
 [Route("api/[controller]")]

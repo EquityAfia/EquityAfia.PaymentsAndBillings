@@ -6,6 +6,6 @@ namespace EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing
 {
     public interface IBillingRepository
     {
-        Task<Billing> AddAsync(Billing billing);
+        Task<IBillingRepository> AddAsync(IBillingRepository billing);
     }
 }
