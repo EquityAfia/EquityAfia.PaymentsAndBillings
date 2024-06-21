@@ -36,7 +36,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
 
             var token = tokenResponse.Data.AccessToken;
             var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
-
+            var phone = mobileNumber.Length > 1 ? mobileNumber.Substring(1) : mobileNumber;
 
 
 
