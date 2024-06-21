@@ -85,6 +85,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             public string MerchantRequestID { get; set; }
             public string CheckoutRequestID { get; set; }
 
+
         }
 
 
