@@ -3,7 +3,7 @@ using EquityAfia.PaymentsAndBillings.Contracts.Billing;
 using System.Net.Http.Json;
 
 
-namespace EquityAfia.PaymentsAndBillings.Application.Services
+namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
 {
     public class AppointmentService : IAppointmentService
     {
