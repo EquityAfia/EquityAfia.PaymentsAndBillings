@@ -76,6 +76,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
         }
         private class TokenResponse
         {
+            public string AccessToken { get; set; }
 
         }
 
