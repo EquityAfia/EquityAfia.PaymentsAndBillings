@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace EquityAfia.PaymentsAndBillings.Contracts.Payment
 {
-    internal class StkPayment
-    {
-    }
+    public class StkPayment { 
+    public string MobileNumber { get; set; }
+    public int BillingId { get; set; }
+}
 }
