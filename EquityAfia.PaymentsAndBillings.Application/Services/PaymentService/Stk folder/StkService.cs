@@ -20,3 +20,6 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             _context = context;
         }
         public async Task<Payment> MakeStkPaymentAsync(int billingId, string mobileNumber)
+        {
+            var billing = await _context.Billings.FindAsync(billingId);
+        }
