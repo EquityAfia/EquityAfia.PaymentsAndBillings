@@ -47,7 +47,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 Password = password,
                 Timestamp = timestamp,
                 TransactionType = "CustomerPayBillOnline",
-
+                Amount = amountToPay,
 
 
             }
