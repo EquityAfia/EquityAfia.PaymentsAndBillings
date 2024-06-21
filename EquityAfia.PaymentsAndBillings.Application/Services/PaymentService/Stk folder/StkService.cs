@@ -58,7 +58,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             if (!stkPushResponse.IsSuccessful) throw new Exception("STK Push failed");
 
             var payment = new Payment
-
+            { }
 
 
 
