@@ -57,7 +57,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             var stkPushResponse = await client.ExecuteAsync<StkPushResponse>(stkPushRequest);
             if (!stkPushResponse.IsSuccessful) throw new Exception("STK Push failed");
 
-            var payment = new Payment
+            var payment = new Payment,
 
 
 
