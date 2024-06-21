@@ -46,7 +46,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 BusinessShortCode = shortcode,
                 Password = password,
                 Timestamp = timestamp,
-
+                TransactionType = "CustomerPayBillOnline",
 
 
             }
