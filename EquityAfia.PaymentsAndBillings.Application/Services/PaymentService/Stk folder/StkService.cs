@@ -31,6 +31,8 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             var tokenRequest = new RestRequest("/oauth/v1/generate?grant_type=client_credentials", Method.GET);
             tokenRequest.AddHeader("Authorization", $"Basic {auth}");
 
+            var tokenResponse = await client.ExecuteAsync<TokenResponse>(tokenRequest);
+
 
 
 
