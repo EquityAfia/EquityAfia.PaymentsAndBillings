@@ -32,6 +32,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             tokenRequest.AddHeader("Authorization", $"Basic {auth}");
 
             var tokenResponse = await client.ExecuteAsync<TokenResponse>(tokenRequest);
+            if (!tokenResponse.IsSuccessful) throw new Exception("Unable to fetch token");
 
 
 
