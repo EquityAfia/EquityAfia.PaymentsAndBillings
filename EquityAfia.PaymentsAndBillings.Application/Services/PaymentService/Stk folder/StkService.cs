@@ -86,10 +86,10 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             public string CheckoutRequestID { get; set; }
             public string ResponseCode { get; set; }
             public string CustomerMessage { get; set; }
-
-
-
         }
+
+
+    }
 
 
 
