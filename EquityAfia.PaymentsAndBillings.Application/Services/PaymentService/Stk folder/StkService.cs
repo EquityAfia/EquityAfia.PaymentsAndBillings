@@ -87,7 +87,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             public string ResponseCode { get; set; }
             public string CustomerMessage { get; set; }
         }
-
+    
 
 
 
