@@ -54,6 +54,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 CallBackURL = _configuration["Mpesa:CallbackUrl"],
                 TransactionDesc = "Payment"
             });
+            var stkPushResponse = await client.ExecuteAsync<StkPushResponse>(stkPushRequest);
 
 
 
@@ -63,7 +64,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
 
 
 
-            }
+        }
 
 
 
