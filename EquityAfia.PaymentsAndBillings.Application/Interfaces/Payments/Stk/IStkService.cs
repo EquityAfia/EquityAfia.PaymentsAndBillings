@@ -1,4 +1,5 @@
 ﻿using EquityAfia.PaymentsAndBillings.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,5 @@ namespace EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk
     {
         Task<Payment> MakeStkPaymentAsync(int billingId, string mobileNumber);
     }
-    _configuration = configuration;
+    
 }
