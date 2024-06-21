@@ -1,32 +1,39 @@
-﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces;
+﻿// Application/Services/PaymentService/StkFolder/StkService.cs
+using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk_folder
+namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFolder
 {
-    public class stkService : IStkService
+    public class StkService : IStkService
     {
         private readonly IConfiguration _configuration;
-        private readonly EquityAfiaDbContext _context;
-        public stkService(IConfiguration configuration, EquityAfiaDbContext context)
+        private readonly IBillingRepository _billingRepository;
+
+        public StkService(IConfiguration configuration, IBillingRepository billingRepository)
         {
             _configuration = configuration;
-            _context = context;
+            _billingRepository = billingRepository;
         }
+
         public async Task<Payment> MakeStkPaymentAsync(int billingId, string mobileNumber)
         {
-            var billing = await _context.Billings.FindAsync(billingId);
+            var billing = await _billingRepository.GetBillingByIdAsync(billingId);
+            if (billing == null)
+            {
+                throw new Exception("Billing not found");
+            }
+
             var amountToPay = billing.AmountBilled;
             var transactionId = Guid.NewGuid().ToString();
             var consumerKey = _configuration["Mpesa:ConsumerKey"];
-            var auth = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes($"{consumerKey}:{consumerSecret}"));
+            var consumerSecret = _configuration["Mpesa:ConsumerSecret"];
+            var passkey = _configuration["Mpesa:Passkey"];
+            var auth = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{consumerKey}:{consumerSecret}"));
 
             var client = new RestClient("https://sandbox.safaricom.co.ke");
             var tokenRequest = new RestRequest("/oauth/v1/generate?grant_type=client_credentials", Method.Get);
@@ -37,9 +44,9 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
 
             var token = tokenResponse.Data.AccessToken;
             var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
-            var phone = mobileNumber.Length > 1 ? mobileNumber.Substring(1) : mobileNumber;
+            var phone = mobileNumber.Length > 1 ? mobileNumber[1..] : mobileNumber;
             var shortcode = _configuration["Mpesa:Paybill"];
-            var password = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes($"{shortcode}{passkey}{timestamp}"));
+            var password = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{shortcode}{passkey}{timestamp}"));
             var stkPushRequest = new RestRequest("/mpesa/stkpush/v1/processrequest", Method.Post);
             stkPushRequest.AddHeader("Authorization", $"Bearer {token}");
             stkPushRequest.AddJsonBody(new
@@ -55,6 +62,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 CallBackURL = _configuration["Mpesa:CallbackUrl"],
                 TransactionDesc = "Payment"
             });
+
             var stkPushResponse = await client.ExecuteAsync<StkPushResponse>(stkPushRequest);
             if (!stkPushResponse.IsSuccessful) throw new Exception("STK Push failed");
 
@@ -71,16 +79,18 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 TransactionId = transactionId,
                 PaymentStatus = "Paid"
             };
-            _context.Payments.Add(payment);
-            await _context.SaveChangesAsync();
+            DbContext.Payments.Add(payment); // This line may need to change depending on your repository pattern
+            await _context.SaveChangesAsync(); // This line may need to change depending on your repository pattern
+
             return payment;
         }
+
         private class TokenResponse
         {
             public string AccessToken { get; set; }
             public string ExpiresIn { get; set; }
-
         }
+
         private class StkPushResponse
         {
             public string MerchantRequestID { get; set; }
@@ -88,30 +98,5 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             public string ResponseCode { get; set; }
             public string CustomerMessage { get; set; }
         }
-    
-
-
-
     }
-
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-        
-    
-
+}
