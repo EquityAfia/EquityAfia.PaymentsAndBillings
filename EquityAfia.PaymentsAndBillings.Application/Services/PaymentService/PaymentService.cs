@@ -4,7 +4,7 @@ using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using EquityAfia.PaymentsAndBillings.Contracts.Billing;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
 
-namespace EquityAfia.PaymentsAndBillings.Application.Services
+namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService
 {
     public class PaymentService : IPaymentService
     {

@@ -7,6 +7,7 @@ using EquityAfia.PaymentsAndBillings.Application.Services;
 using EquityAfia.PaymentsAndBillings.Infrastructure.Migrations.Repositories;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Application.Services.BillingService;
+using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService;
 
 public static class DependencyInjection
 {
