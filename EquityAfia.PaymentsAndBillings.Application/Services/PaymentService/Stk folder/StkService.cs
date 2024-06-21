@@ -83,6 +83,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
         private class StkPushResponse
         {
             public string MerchantRequestID { get; set; }
+
         }
 
 
