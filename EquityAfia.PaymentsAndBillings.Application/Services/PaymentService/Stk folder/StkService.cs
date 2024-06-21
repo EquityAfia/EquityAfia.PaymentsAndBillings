@@ -2,7 +2,6 @@
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using RestSharp;
 using System.Text;
@@ -79,7 +78,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 TransactionId = transactionId,
                 PaymentStatus = "Paid"
             };
-            DbContext.Payments.Add(payment); // This line may need to change depending on your repository pattern
+            _context.Payments.Add(payment); // This line may need to change depending on your repository pattern
             await _context.SaveChangesAsync(); // This line may need to change depending on your repository pattern
 
             return payment;
