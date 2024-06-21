@@ -39,7 +39,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             var phone = mobileNumber.Length > 1 ? mobileNumber.Substring(1) : mobileNumber;
             var shortcode = _configuration["Mpesa:Paybill"];
             var password = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes($"{shortcode}{passkey}{timestamp}"));
-
+            var stkPushRequest = new RestRequest("/mpesa/stkpush/v1/processrequest", Method.POST);
 
 
 
