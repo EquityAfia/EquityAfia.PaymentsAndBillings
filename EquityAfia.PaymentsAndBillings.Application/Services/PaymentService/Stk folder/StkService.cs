@@ -42,7 +42,9 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             var stkPushRequest = new RestRequest("/mpesa/stkpush/v1/processrequest", Method.POST);
             stkPushRequest.AddHeader("Authorization", $"Bearer {token}");
             stkPushRequest.AddJsonBody(new
-            {}
+            {
+
+            }
 
 
 
