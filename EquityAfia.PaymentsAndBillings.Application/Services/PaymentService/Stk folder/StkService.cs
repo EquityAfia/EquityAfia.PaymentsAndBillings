@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces;
+using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk_folder
 {
-    internal class StkService
+    public class stkService : IStkService
     {
+
     }
 }
