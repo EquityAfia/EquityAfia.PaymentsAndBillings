@@ -48,6 +48,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 Timestamp = timestamp,
                 TransactionType = "CustomerPayBillOnline",
                 Amount = amountToPay,
+                PartyA = $"254{phone}",
 
 
 
