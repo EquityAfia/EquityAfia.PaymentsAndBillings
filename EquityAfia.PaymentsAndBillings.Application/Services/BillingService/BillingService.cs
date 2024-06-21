@@ -6,7 +6,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EquityAfia.PaymentsAndBillings.Application.Services
+namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
 {
     public class BillingService : IBillingService
     {
@@ -42,7 +42,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services
             var charges = await _appointmentService.GetAppointmentChargesByCustomerIdAsync(billingDto.CustomerId);
 
             // Calculate total amount billed
-            billingDto.AmountBilled = (decimal)(products.Sum(p => p.Price * p.Quantity) + charges.Sum(c => c.Amount));
+            billingDto.AmountBilled = products.Sum(p => p.Price * p.Quantity) + charges.Sum(c => c.Amount);
 
 
             // Create Billing entity
