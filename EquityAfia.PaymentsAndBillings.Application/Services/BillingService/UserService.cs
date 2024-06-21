@@ -7,7 +7,7 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquityAfia.PaymentsAndBillings.Application.Services
+namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
 {
     public class UserService : IUserService
     {
@@ -18,13 +18,13 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services
             _httpClient = httpClientFactory.CreateClient();
         }
 
-        public async Task<Contracts.Billing.UserDto> GetUserByIdAsync(string userId)
+        public async Task<UserDto> GetUserByIdAsync(string userId)
         {
             var response = await _httpClient.GetAsync($"http://usermanagement/api/users/{userId}");
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadFromJsonAsync<Contracts.Billing.UserDto>();
+            return await response.Content.ReadFromJsonAsync<UserDto>();
         }
-        
+
     }
 }
 
