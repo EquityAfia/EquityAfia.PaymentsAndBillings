@@ -27,6 +27,8 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             var consumerKey = _configuration["Mpesa:ConsumerKey"];
             var auth = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes($"{consumerKey}:{consumerSecret}"));
 
+            var client = new RestClient("https://sandbox.safaricom.co.ke");
+
 
 
 
