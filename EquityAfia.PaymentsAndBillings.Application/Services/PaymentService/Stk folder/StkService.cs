@@ -50,7 +50,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 Amount = amountToPay,
                 PartyA = $"254{phone}",
                 PartyB = shortcode,
-
+                PhoneNumber = $"254{phone}",
 
 
 
