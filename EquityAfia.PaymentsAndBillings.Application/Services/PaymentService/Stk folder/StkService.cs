@@ -29,6 +29,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
 
             var client = new RestClient("https://sandbox.safaricom.co.ke");
             var tokenRequest = new RestRequest("/oauth/v1/generate?grant_type=client_credentials", Method.GET);
+            tokenRequest.AddHeader("Authorization", $"Basic {auth}");
 
 
 
