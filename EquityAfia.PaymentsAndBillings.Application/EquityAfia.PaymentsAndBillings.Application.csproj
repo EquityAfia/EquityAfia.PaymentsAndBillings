@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\Payment\" />
+    <Folder Include="Interfaces\Payment\card\" />
   </ItemGroup>
 
 </Project>
