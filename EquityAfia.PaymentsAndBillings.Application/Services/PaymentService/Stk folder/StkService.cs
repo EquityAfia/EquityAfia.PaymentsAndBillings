@@ -72,6 +72,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             };
             _context.Payments.Add(payment);
 
+
         }
 
 
