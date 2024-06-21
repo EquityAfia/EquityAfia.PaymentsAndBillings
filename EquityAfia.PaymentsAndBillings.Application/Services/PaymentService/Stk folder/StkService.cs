@@ -44,7 +44,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             stkPushRequest.AddJsonBody(new
             {
                 BusinessShortCode = shortcode,
-
+                Password = password,
 
             }
 
