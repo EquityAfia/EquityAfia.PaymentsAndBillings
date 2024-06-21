@@ -1,5 +1,5 @@
 ﻿// Contracts/Billing/CreateStripePaymentIntentRequest.cs
-namespace EquityAfia.PaymentsAndBillings.Contracts.Billing
+namespace EquityAfia.PaymentsAndBillings.Contracts.Payment.Card
 {
     public class CreateStripePaymentIntentRequest
     {
