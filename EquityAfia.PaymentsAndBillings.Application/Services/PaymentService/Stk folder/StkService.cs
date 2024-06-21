@@ -71,6 +71,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 PaymentStatus = "Paid"
             };
             _context.Payments.Add(payment);
+            await _context.SaveChangesAsync();
 
 
         }
