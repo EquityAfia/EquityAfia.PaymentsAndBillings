@@ -1,4 +1,4 @@
-﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces;
+﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;

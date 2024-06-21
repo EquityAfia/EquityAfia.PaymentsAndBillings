@@ -2,7 +2,7 @@
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
 using System.Threading.Tasks;
 
-namespace EquityAfia.PaymentsAndBillings.Application.Interfaces
+namespace EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing
 {
     public interface IBillingRepository
     {
