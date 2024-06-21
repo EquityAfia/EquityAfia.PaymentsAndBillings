@@ -75,9 +75,9 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             return payment;
         }
         private class TokenResponse
+        {
 
-
-    }
+        }
 
 
 
