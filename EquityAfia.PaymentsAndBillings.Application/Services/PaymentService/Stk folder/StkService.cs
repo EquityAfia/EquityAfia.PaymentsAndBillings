@@ -1,5 +1,6 @@
 ﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,6 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
 {
     public class stkService : IStkService
     {
-
+        private readonly IConfiguration _configuration;
     }
 }
