@@ -69,9 +69,9 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 PaymentMethod = "M-Pesa",
                 TransactionId = transactionId,
                 PaymentStatus = "Paid"
+            };
 
-
-            }
+        }
 
 
 
