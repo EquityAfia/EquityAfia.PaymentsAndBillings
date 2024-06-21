@@ -12,6 +12,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
     public class stkService : IStkService
     {
         private readonly IConfiguration _configuration;
-        private readonly EquityAfiaDbContext _context; 
+        private readonly EquityAfiaDbContext _context;
+        public stkService(IConfiguration configuration, EquityAfiaDbContext context)
     }
 }
