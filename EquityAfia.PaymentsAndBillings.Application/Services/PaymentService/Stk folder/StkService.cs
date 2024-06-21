@@ -66,6 +66,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 CustomerEmail = billing.CustomerEmail,
                 Products = billing.Products,
                 Services = billing.Services,
+
             }
 
 
