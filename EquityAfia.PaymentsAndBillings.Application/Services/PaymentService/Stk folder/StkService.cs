@@ -27,6 +27,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             var consumerKey = _configuration["Mpesa:ConsumerKey"];
 
 
+
         }
     }
 }
