@@ -40,7 +40,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             var shortcode = _configuration["Mpesa:Paybill"];
             var password = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes($"{shortcode}{passkey}{timestamp}"));
             var stkPushRequest = new RestRequest("/mpesa/stkpush/v1/processrequest", Method.POST);
-
+            stkPushRequest.AddHeader("Authorization", $"Bearer {token}");
 
 
 
