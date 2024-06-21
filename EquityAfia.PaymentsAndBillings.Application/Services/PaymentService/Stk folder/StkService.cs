@@ -70,6 +70,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 TransactionId = transactionId,
                 PaymentStatus = "Paid"
 
+
             }
 
 
