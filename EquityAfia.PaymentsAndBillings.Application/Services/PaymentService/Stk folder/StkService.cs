@@ -73,10 +73,10 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             _context.Payments.Add(payment);
             await _context.SaveChangesAsync();
             return payment;
-
-
-
         }
+
+
+    }
 
 
 
