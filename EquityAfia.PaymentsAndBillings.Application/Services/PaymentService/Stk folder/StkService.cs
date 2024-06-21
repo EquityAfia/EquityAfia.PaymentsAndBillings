@@ -55,7 +55,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 TransactionDesc = "Payment"
             });
             var stkPushResponse = await client.ExecuteAsync<StkPushResponse>(stkPushRequest);
-
+            if (!stkPushResponse.IsSuccessful) throw new Exception("STK Push failed");
 
 
 
