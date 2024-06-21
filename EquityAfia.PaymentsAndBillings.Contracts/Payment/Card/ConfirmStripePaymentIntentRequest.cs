@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquityAfia.PaymentsAndBillings.Contracts.Payment
+namespace EquityAfia.PaymentsAndBillings.Contracts.Payment.Card
 {
     public class ConfirmStripePaymentIntentRequest
     {

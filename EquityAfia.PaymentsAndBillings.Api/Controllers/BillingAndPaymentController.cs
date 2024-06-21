@@ -1,7 +1,7 @@
 ﻿// API/Controllers/BillingAndPaymentController.cs
 using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using EquityAfia.PaymentsAndBillings.Contracts.Billing;
-using EquityAfia.PaymentsAndBillings.Contracts.Payment;
+using EquityAfia.PaymentsAndBillings.Contracts.Payment.Card;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
