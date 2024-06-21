@@ -59,7 +59,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
 
             var payment = new Payment
             {
-
+                AmountBilled = amountToPay,
             }
 
 
