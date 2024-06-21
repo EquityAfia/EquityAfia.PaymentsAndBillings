@@ -38,7 +38,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
             var phone = mobileNumber.Length > 1 ? mobileNumber.Substring(1) : mobileNumber;
             var shortcode = _configuration["Mpesa:Paybill"];
-
+            var password = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes($"{shortcode}{passkey}{timestamp}"));
 
 
 
