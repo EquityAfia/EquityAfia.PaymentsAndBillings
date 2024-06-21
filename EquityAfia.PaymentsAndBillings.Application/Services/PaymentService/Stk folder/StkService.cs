@@ -78,6 +78,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
         {
             public string AccessToken { get; set; }
             public string ExpiresIn { get; set; }
+
         }
 
 
