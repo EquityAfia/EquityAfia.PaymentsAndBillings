@@ -43,6 +43,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             stkPushRequest.AddHeader("Authorization", $"Bearer {token}");
             stkPushRequest.AddJsonBody(new
             {
+                BusinessShortCode = shortcode,
 
             }
 
