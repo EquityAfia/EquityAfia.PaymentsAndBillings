@@ -12,5 +12,6 @@ namespace EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk
         Task<Payment> MakeStkPaymentAsync(int billingId, string mobileNumber);
     }
     _configuration = configuration;
-        _context = context;
+    _context = context;
 }
+public async Task<Payment> MakeStkPaymentAsync(int billingId, string mobileNumber)
