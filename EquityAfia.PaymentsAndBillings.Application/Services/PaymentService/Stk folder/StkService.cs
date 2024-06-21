@@ -49,6 +49,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 TransactionType = "CustomerPayBillOnline",
 
 
+
             }
 
 
