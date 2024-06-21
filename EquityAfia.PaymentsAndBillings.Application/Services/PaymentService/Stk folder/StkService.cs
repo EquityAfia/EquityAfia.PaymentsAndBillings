@@ -48,6 +48,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 Timestamp = timestamp,
 
 
+
             }
 
 
