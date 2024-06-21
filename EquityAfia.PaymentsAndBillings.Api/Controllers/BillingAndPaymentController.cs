@@ -1,9 +1,11 @@
-﻿// API/Controllers/BillingAndPaymentController.cs
-using EquityAfia.PaymentsAndBillings.Application.Interfaces;
+﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Contracts.Billing;
 using EquityAfia.PaymentsAndBillings.Contracts.Payment.Card;
+using EquityAfia.PaymentsAndBillings.Contracts.Payment.Stk;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -80,6 +82,21 @@ public class BillingAndPaymentController : ControllerBase
             return StatusCode(500, new { error = ex.Message });
         }
     }
-}
 
-//
+    [HttpPost("payment/stk/{billingId}")]
+    public async Task<IActionResult> MakeStkPayment(int billingId, [FromBody] StkPaymentRequest request)
+    {
+        if (request == null)
+            return BadRequest("Request data is required");
+
+        try
+        {
+            var payment = await _paymentService.MakeStkPaymentAsync(billingId, request.MobileNumber);
+            return Ok(payment);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { error = ex.Message });
+        }
+    }
+}

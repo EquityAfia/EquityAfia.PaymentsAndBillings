@@ -18,5 +18,6 @@ namespace EquityAfia.PaymentsAndBillings.Domain.Entities
         public DateTime CreatedAt { get; set; }
         public int? BillingId { get; set; }
         public Billing Billing { get; set; }
+        public object AmountToPay { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
 using Microsoft.Extensions.Configuration;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,7 +60,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
 
             var payment = new Payment
             {
-                AmountBilled = amountToPay,
+                AmountToPay = billing.AmountBilled,
                 AmountPaid = amountToPay,
                 CustomerId = billing.CustomerId,
                 CustomerName = billing.CustomerName,
