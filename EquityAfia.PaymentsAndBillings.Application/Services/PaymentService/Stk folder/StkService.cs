@@ -74,7 +74,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             await _context.SaveChangesAsync();
             return payment;
         }
-
+        private class TokenResponse
 
 
     }
