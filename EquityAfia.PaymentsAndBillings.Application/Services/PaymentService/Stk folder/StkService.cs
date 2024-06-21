@@ -25,6 +25,8 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             var amountToPay = billing.AmountBilled;
             var transactionId = Guid.NewGuid().ToString();
             var consumerKey = _configuration["Mpesa:ConsumerKey"];
+
+
         }
     }
 }
