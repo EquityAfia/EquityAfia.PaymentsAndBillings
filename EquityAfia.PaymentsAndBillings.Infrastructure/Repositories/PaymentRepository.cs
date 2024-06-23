@@ -1,7 +1,4 @@
 ﻿// Infrastructure/Repositories/PaymentRepository.cs
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
 using EquityAfia.PaymentsAndBillings.Infrastructure.Data;
@@ -9,7 +6,7 @@ using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 
 namespace EquityAfia.PaymentsAndBillings.Infrastructure.Repositories
 {
-    public class PaymentRepository :IPaymentRepositor
+    public class PaymentRepository :IPaymentRepository
     {
         private readonly EquityAfiaDbContext _context;
 
