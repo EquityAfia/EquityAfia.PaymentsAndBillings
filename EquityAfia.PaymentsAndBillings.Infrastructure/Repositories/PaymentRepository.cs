@@ -9,7 +9,7 @@ using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 
 namespace EquityAfia.PaymentsAndBillings.Infrastructure.Repositories
 {
-    public class PaymentRepository :me
+    public class PaymentRepository :I
     {
         private readonly EquityAfiaDbContext _context;
 
