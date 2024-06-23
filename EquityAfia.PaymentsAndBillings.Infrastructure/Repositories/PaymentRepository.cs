@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
 using EquityAfia.PaymentsAndBillings.Infrastructure.Data;
-using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 
 namespace EquityAfia.PaymentsAndBillings.Infrastructure.Repositories
 {
