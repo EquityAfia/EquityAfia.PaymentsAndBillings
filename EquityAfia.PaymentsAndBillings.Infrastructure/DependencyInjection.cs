@@ -11,6 +11,7 @@ using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService;
 using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StripeService;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
 using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFolder;
+using EquityAfia.PaymentsAndBillings.Infrastructure.Repositories;
 
 public static class DependencyInjection
 {
