@@ -79,8 +79,8 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 TransactionId = transactionId,
                 PaymentStatus = "Paid"
             };
-            IPaymentRepository.Add(payment); // This line may need to change depending on your repository pattern
-            await IPaymentRepository.SaveChangesAsync(); // This line may need to change depending on your repository pattern
+            _paymentRepository.Add(payment); // This line may need to change depending on your repository pattern
+            await _paymentRepository.SaveChangesAsync(); // This line may need to change depending on your repository pattern
 
             return payment;
         }
