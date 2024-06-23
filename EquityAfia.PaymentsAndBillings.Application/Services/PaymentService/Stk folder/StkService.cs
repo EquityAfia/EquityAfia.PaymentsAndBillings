@@ -26,7 +26,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
 
         public async Task<Payment> MakeStkPaymentAsync(int billingId, string mobileNumber)
         {
-             billing = await _billingRepository.GetBillingByIdAsync(billingId);
+             _billing = await _billingRepository.GetBillingByIdAsync(billingId);
             if (billing == null)
             {
                 throw new Exception("Billing not found");
