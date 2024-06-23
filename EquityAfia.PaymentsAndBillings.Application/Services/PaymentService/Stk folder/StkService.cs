@@ -1,4 +1,5 @@
 ﻿// Application/Services/PaymentService/StkFolder/StkService.cs
+using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
@@ -78,7 +79,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 TransactionId = transactionId,
                 PaymentStatus = "Paid"
             };
-            _context.Payments.Add(payment); // This line may need to change depending on your repository pattern
+            _paymentRepository.Add(payment); // This line may need to change depending on your repository pattern
             await _context.SaveChangesAsync(); // This line may need to change depending on your repository pattern
 
             return payment;
