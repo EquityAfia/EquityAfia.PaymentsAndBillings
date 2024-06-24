@@ -1,11 +1,14 @@
 ﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces;
-using EquityAfia.PaymentsAndBillings.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using RestSharp;
+using System;
 using System.Text;
+using System.Threading.Tasks;
+using EquityAfia.PaymentsAndBillings.Domain.Entities;
+using EquityAfia.PaymentsAndBillings.Contracts.Billing;
 
 namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFolder
 {
@@ -24,12 +27,17 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
 
         public async Task<Payment> MakeStkPaymentAsync(int billingId, string mobileNumber)
         {
-            Billing billing = await _billingRepository.GetBillingByIdAsync(billingId);
-            if (billing == null)
+            // Retrieve BillingDto from repository
+            BillingDto billingDto = await _billingRepository.GetBillingDtoByIdAsync(billingId);
+            if (billingDto == null)
             {
                 throw new Exception("Billing not found");
             }
 
+            // Convert BillingDto to Billing entity
+            Billing billing = MapBillingDtoToBilling(billingDto);
+
+            // Continue with your payment processing logic
             var amountToPay = billing.AmountBilled;
             var transactionId = Guid.NewGuid().ToString();
             var consumerKey = _configuration["Mpesa:ConsumerKey"];
@@ -87,6 +95,22 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             await _paymentRepository.SaveChangesAsync();
 
             return payment;
+        }
+
+        private Billing MapBillingDtoToBilling(BillingDto billingDto)
+        {
+            // Implement your mapping logic here
+            return new Billing
+            {
+                BillingId = billingDto.BillingId,
+                AmountBilled = billing.AmountBilled,
+                CustomerId = billingDto.CustomerId,
+                CustomerName = billingDto.CustomerName,
+                CustomerEmail = billingDto.CustomerEmail,
+                Products = billing.Products,
+                Services = billing.Services
+                // Map other properties as needed
+            };
         }
 
         private class TokenResponse

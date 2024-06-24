@@ -21,9 +21,11 @@ namespace EquityAfia.PaymentsAndBillings.Application.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Billing> GetBillingByIdAsync(int billingId)
+        public async Task<Billing> GetBillingByIdOrAppointmentIdAsync(int billingId, int appointmentId)
         {
-            return await _context.Billings.FirstOrDefaultAsync(b => b.BillingId == billingId);
+            return await _context.Billings
+                .FirstOrDefaultAsync(b => b.BillingId == billingId || b.AppointmentId == appointmentId);
         }
+
     }
 }
