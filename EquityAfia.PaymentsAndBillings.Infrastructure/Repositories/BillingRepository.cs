@@ -1,19 +1,28 @@
 ﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
-using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
-namespace EquityAfia.PaymentsAndBillings.Infrastructure.Migrations.Repositories
+namespace EquityAfia.PaymentsAndBillings.Application.Repositories
 {
     public class BillingRepository : IBillingRepository
     {
-        private readonly List<Billing> _billingStore = new List<Billing>();
+        private readonly ApplicationDbContext _context;
 
-        public async Task<Billing> AddAsync(Billing billing)
+        public BillingRepository(ApplicationDbContext context)
         {
-            _billingStore.Add(billing);
-            await Task.CompletedTask; // Simulate async operation
-            return billing;
+            _context = context;
+        }
+
+        public async Task AddAsync(Billing billing)
+        {
+            await _context.Billings.AddAsync(billing);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<Billing> GetBillingByIdAsync(int billingId)
+        {
+            return await _context.Billings.FirstOrDefaultAsync(b => b.BillingId == billingId);
         }
     }
 }
