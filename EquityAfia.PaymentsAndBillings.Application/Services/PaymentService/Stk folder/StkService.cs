@@ -103,12 +103,12 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             return new Billing
             {
                 BillingId = billingDto.BillingId,
-                AmountBilled = billing.AmountBilled,
+                AmountBilled = billingDto.AmountBilled,
                 CustomerId = billingDto.CustomerId,
                 CustomerName = billingDto.CustomerName,
                 CustomerEmail = billingDto.CustomerEmail,
-                Products = billing.Products,
-                Services = billing.Services
+                Products = billingDto.Products,
+                Services = billingDto.Services
                 // Map other properties as needed
             };
         }
