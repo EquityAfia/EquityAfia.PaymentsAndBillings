@@ -1,5 +1,4 @@
-﻿// Add the required using directive for JSON serialization
-using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
+﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
@@ -7,8 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using RestSharp;
 using System.Text;
-
-// ... other using directives
 
 namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFolder
 {
