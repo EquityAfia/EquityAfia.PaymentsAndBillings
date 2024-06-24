@@ -7,7 +7,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Repositories
 {
     public class BillingRepository : IBillingRepository
     {
-        private readonly ApplicDbContext _context;
+        private readonly AppliDbContext _context;
 
         public BillingRepository(ApplicationDbContext context)
         {
