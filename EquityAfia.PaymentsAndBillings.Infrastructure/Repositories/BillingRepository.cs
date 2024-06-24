@@ -1,5 +1,6 @@
 ﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
+using EquityAfia.PaymentsAndBillings.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
@@ -7,9 +8,9 @@ namespace EquityAfia.PaymentsAndBillings.Application.Repositories
 {
     public class BillingRepository : IBillingRepository
     {
-        private readonly DbContext _context;
+        private readonly EquityAfiaDbContext _context;
 
-        public BillingRepository(DbContext context)
+        public BillingRepository(EquityAfiaDbContext context)
         {
             _context = context;
         }
