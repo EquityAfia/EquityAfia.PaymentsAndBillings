@@ -1,6 +1,6 @@
 ﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
-using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFolder;
+using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk; // Add this line
 using EquityAfia.PaymentsAndBillings.Contracts.Billing;
 using EquityAfia.PaymentsAndBillings.Contracts.Payment.Card;
 using EquityAfia.PaymentsAndBillings.Contracts.Payment.Stk;
@@ -15,12 +15,14 @@ public class BillingAndPaymentController : ControllerBase
     private readonly IBillingService _billingService;
     private readonly IPaymentService _paymentService;
     private readonly IStripeService _stripeService;
+    private readonly IStkService _stkService; // Add this line
 
-    public BillingAndPaymentController(IBillingService billingService, IPaymentService paymentService, IStripeService stripeService)
+    public BillingAndPaymentController(IBillingService billingService, IPaymentService paymentService, IStripeService stripeService, IStkService stkService)
     {
         _billingService = billingService;
         _paymentService = paymentService;
         _stripeService = stripeService;
+        _stkService = stkService; // Add this line
     }
 
     [HttpPost("billing")]
@@ -92,7 +94,7 @@ public class BillingAndPaymentController : ControllerBase
 
         try
         {
-            var payment = await StkService.MakeStkPaymentAsync(billingId, request.MobileNumber);
+            var payment = await _stkService.MakeStkPaymentAsync(billingId, request.MobileNumber); // Use _stkService here
             return Ok(payment);
         }
         catch (Exception ex)
