@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
 using EquityAfia.PaymentsAndBillings.Infrastructure.Data;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces;
+using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 
 namespace EquityAfia.PaymentsAndBillings.Infrastructure.Repositories
 {
@@ -47,6 +48,11 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Repositories
         public async Task SaveChangesAsync()
         {
             await _context.SaveChangesAsync();
+        }
+
+        Task<IBillingRepository> IPaymentRepository.GetBillingByIdOrAppointmentIdAsync(int billingId, int appointmentId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

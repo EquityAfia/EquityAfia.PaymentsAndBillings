@@ -18,6 +18,16 @@ namespace EquityAfia.PaymentsAndBillings.Domain.Entities
         // Navigation Properties
         public List<Service> Services { get; set; }
         public List<Product> Products { get; set; }
+
+        public static implicit operator Billing(PaymentsAndBillings.Contracts.Billing.BillingDto v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static implicit operator Billing(PaymentsAndBillings.Contracts.Billing.BillingDto v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class Service
