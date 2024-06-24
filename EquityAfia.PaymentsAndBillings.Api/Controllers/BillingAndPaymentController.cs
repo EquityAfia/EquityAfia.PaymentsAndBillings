@@ -1,5 +1,6 @@
 ﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
+using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFolder;
 using EquityAfia.PaymentsAndBillings.Contracts.Billing;
 using EquityAfia.PaymentsAndBillings.Contracts.Payment.Card;
 using EquityAfia.PaymentsAndBillings.Contracts.Payment.Stk;
@@ -91,7 +92,7 @@ public class BillingAndPaymentController : ControllerBase
 
         try
         {
-            var payment = await _stkService.MakeStkPaymentAsync(billingId, request.MobileNumber);
+            var payment = await StkService.MakeStkPaymentAsync(billingId, request.MobileNumber);
             return Ok(payment);
         }
         catch (Exception ex)
