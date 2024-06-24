@@ -1,13 +1,14 @@
-﻿// Application/Services/PaymentService/StkFolder/StkService.cs
-using EquityAfia.PaymentsAndBillings.Application.Interfaces;
+﻿// Add the required using directive for JSON serialization
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
+using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using RestSharp;
-using System;
 using System.Text;
-using System.Threading.Tasks;
+
+// ... other using directives
 
 namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFolder
 {
@@ -78,8 +79,8 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
                 CustomerId = billing.CustomerId,
                 CustomerName = billing.CustomerName,
                 CustomerEmail = billing.CustomerEmail,
-                Products = billing.Products,
-                Services = billing.Services,
+                Products = JsonConvert.SerializeObject(billing.Products), // Serialize list to JSON string
+                Services = JsonConvert.SerializeObject(billing.Services), // Serialize list to JSON string
                 PaymentMethod = "M-Pesa",
                 TransactionId = transactionId,
                 PaymentStatus = "Paid"
