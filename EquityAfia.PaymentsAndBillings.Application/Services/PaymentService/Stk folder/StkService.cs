@@ -24,12 +24,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
             _paymentRepository = paymentRepository;
         }
 
-        public IBillingRepository Get_billingRepository()
-        {
-            return _billingRepository;
-        }
-
-        public async Task<Payment> MakeStkPaymentAsync(int billingId, string mobileNumber, IBillingRepository _billingRepository)
+        public async Task<Payment> MakeStkPaymentAsync(int billingId, string mobileNumber)
         {
              var billing = await _billingRepository.GetBillingByIdAsync(billingId);
             if (billing == null)
