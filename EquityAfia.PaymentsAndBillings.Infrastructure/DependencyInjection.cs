@@ -4,7 +4,6 @@ using Microsoft.Extensions.Configuration;
 using EquityAfia.PaymentsAndBillings.Infrastructure.Data;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using EquityAfia.PaymentsAndBillings.Application.Services;
-using EquityAfia.PaymentsAndBillings.Infrastructure.Migrations.Repositories;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Application.Services.BillingService;
 using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService;
@@ -12,6 +11,7 @@ using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StripeS
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
 using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFolder;
 using EquityAfia.PaymentsAndBillings.Infrastructure.Repositories;
+using EquityAfia.PaymentsAndBillings.Application.Repositories;
 
 public static class DependencyInjection
 {

@@ -1,11 +1,12 @@
-﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
+﻿using AutoMapper;
+using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces;
-
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using RestSharp;
 using System.Text;
+using System.Threading.Tasks;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
 
 namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFolder
@@ -15,21 +16,25 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
         private readonly IConfiguration _configuration;
         private readonly IBillingRepository _billingRepository;
         private readonly IPaymentRepository _paymentRepository;
+        private readonly IMapper _mapper;
 
-        public StkService(IConfiguration configuration, IBillingRepository billingRepository, IPaymentRepository paymentRepository)
+        public StkService(IConfiguration configuration, IBillingRepository billingRepository, IPaymentRepository paymentRepository, IMapper mapper)
         {
             _configuration = configuration;
             _billingRepository = billingRepository;
             _paymentRepository = paymentRepository;
+            _mapper = mapper;
         }
 
         public async Task<Payment> MakeStkPaymentAsync(int billingId, string mobileNumber)
         {
-            Billing billing = await _billingRepository.GetBillingByIdAsync(billingId);
-            if (billing == null)
+            var billingDto = await _billingRepository.GetBillingByIdAsync(billingId);
+            if (billingDto == null)
             {
                 throw new Exception("Billing not found");
             }
+
+            var billing = _mapper.Map<Billing>(billingDto);
 
             var amountToPay = billing.AmountBilled;
             var transactionId = Guid.NewGuid().ToString();
@@ -89,7 +94,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
 
             return payment;
         }
-          
+
         private class TokenResponse
         {
             public string AccessToken { get; set; }
