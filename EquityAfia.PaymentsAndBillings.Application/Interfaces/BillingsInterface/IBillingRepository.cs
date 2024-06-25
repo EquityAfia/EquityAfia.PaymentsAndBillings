@@ -4,6 +4,6 @@
     {
         Task AddAsync( IBillingRepository);
         Task<IBillingRepository> GetBillingByIdOrAppointmentIdAsync(int billingId, int appointmentId);
-        Task<Billing> GetBillingByIdAsync(int billingId);
+        Task<IBillingRepository> GetBillingByIdAsync(int billingId);
     }
 }
