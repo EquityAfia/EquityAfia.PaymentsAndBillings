@@ -9,7 +9,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Repositories
     public class BillingRepository : IBillingRepository
     {
         private readonly EquityAfiaDbContext _context;
-           
+
         public BillingRepository(EquityAfiaDbContext context)
         {
             _context = context;
@@ -27,5 +27,10 @@ namespace EquityAfia.PaymentsAndBillings.Application.Repositories
                 .FirstOrDefaultAsync(b => b.BillingId == billingId || b.AppointmentId == appointmentId);
         }
 
+        public async Task<Billing> GetBillingByIdAsync(int billingId)
+        {
+            return await _context.Billings
+                .FirstOrDefaultAsync(b => b.BillingId == billingId);
+        }
     }
 }

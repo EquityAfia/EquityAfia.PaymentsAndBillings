@@ -13,27 +13,30 @@ using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFold
 using EquityAfia.PaymentsAndBillings.Infrastructure.Repositories;
 using EquityAfia.PaymentsAndBillings.Application.Repositories;
 
-public static class DependencyInjection
+namespace EquityAfia.PaymentsAndBillings.Infrastructure
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+    public static class DependencyInjection
     {
-        // Register DbContext
-        services.AddDbContext<EquityAfiaDbContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        {
+            // Register DbContext
+            services.AddDbContext<EquityAfiaDbContext>(options =>
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-        // Register repositories
-        services.AddScoped<IBillingRepository, BillingRepository>();
+            // Register repositories
+            services.AddScoped<IBillingRepository, BillingRepository>();
 
-        // Register services
-        services.AddScoped<IBillingService, BillingService>();
-        services.AddScoped<IUserService, UserService>();
-        services.AddScoped<IEPharmacyService, EPharmacyService>();
-        services.AddScoped<IAppointmentService, AppointmentService>();
-        services.AddScoped<IPaymentService, PaymentService>();
-        services.AddScoped<IPaymentRepository, PaymentRepository>();
-        services.AddScoped<IStripeService, StripeService>();
-        services.AddScoped<IStkService,    StkService>();
+            // Register services
+            services.AddScoped<IBillingService, BillingService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IEPharmacyService, EPharmacyService>();
+            services.AddScoped<IAppointmentService, AppointmentService>();
+            services.AddScoped<IPaymentService, PaymentService>();
+            services.AddScoped<IPaymentRepository, PaymentRepository>();
+            services.AddScoped<IStripeService, StripeService>();
+            services.AddScoped<IStkService, StkService>();
 
-        return services;
+            return services;
+        }
     }
 }
