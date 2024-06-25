@@ -2,7 +2,7 @@
 {
     public interface IBillingRepository
     {
-        Task AddAsync( IBillingRepository,Billing);
+        Task AddAsync( IBillingRepository,billing);
         Task<Billing> GetBillingByIdOrAppointmentIdAsync(int billingId, int appointmentId);
         Task<Billing> GetBillingByIdAsync(int billingId);
     }
