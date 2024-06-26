@@ -1,9 +1,11 @@
-﻿namespace EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing
+﻿using System.Threading.Tasks;
+
+namespace EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing
 {
     public interface IBillingRepository
     {
-        Task AddAsync(Billing billing);
-        Task<Billing> GetBillingByIdOrAppointmentIdAsync(int billingId, int appointmentId);
-        Task<Billing> GetBillingByIdAsync(int billingId);
+        Task AddAsync(EquityAfia.PaymentsAndBillings.Domain.Entities.Billing billing);
+        Task<EquityAfia.PaymentsAndBillings.Domain.Entities.Billing> GetBillingByIdOrAppointmentIdAsync(int billingId, int appointmentId);
+        Task<EquityAfia.PaymentsAndBillings.Domain.Entities.Billing> GetBillingByIdAsync(int billingId);
     }
 }
