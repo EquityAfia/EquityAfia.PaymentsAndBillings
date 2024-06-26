@@ -37,7 +37,7 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure
             services.AddScoped<IStkService, StkService>();
 
             // Register AutoMapper with fully qualified method call
-            ServiceCollectionExtensi.AddAutoMapper(
+            ServiceCollectionExtensio.AddAutoMapper(
                 services,
                 typeof(EquityAfia.PaymentsAndBillings.Application.Mappings.MappingProfile).Assembly
             );
