@@ -14,6 +14,7 @@ using EquityAfia.PaymentsAndBillings.Infrastructure.Repositories;
 using EquityAfia.PaymentsAndBillings.Application.Repositories;
 using Mapster;
 using MapsterMapper;
+using Microsoft.Win32;
 
 namespace EquityAfia.PaymentsAndBillings.Infrastructure
 {
@@ -42,7 +43,7 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure
             var config = TypeAdapterConfig.GlobalSettings;
             config.Scan(typeof(DependencyInjection).Assembly);
             services.AddSingleton(config);
-            services.AddScoped<IMapper, MapsterMapper>();
+            services.AddScoped<IMapper, EquityAfia.PaymentsAndBillings.Infrastructure.Mapping.MapsterMapper>();
 
             return services;
         }
