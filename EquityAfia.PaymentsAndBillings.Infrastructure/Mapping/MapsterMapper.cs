@@ -11,7 +11,7 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
     public class MapsterMapper : IMapper
     {
         private readonly TypeAdapterConfig _config;
-
+        public MapsterMapper(TypeAdapterConfig config)
 
     }
 }
