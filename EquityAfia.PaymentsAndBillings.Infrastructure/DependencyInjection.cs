@@ -12,8 +12,6 @@ using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
 using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFolder;
 using EquityAfia.PaymentsAndBillings.Infrastructure.Repositories;
 using EquityAfia.PaymentsAndBillings.Application.Repositories;
-using AutoMapper;
-using AutoMapper.Extensions.Microsoft.DependencyInjection;
 
 namespace EquityAfia.PaymentsAndBillings.Infrastructure
 {
