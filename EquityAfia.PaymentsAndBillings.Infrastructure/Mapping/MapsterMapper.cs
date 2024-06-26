@@ -9,6 +9,7 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
 {
     internal class MapsterMapper: IMapper
 
+
     {
     }
 }
