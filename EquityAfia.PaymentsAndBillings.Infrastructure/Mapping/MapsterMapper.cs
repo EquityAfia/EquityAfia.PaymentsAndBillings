@@ -15,10 +15,10 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
 
     }
     _config = config;
-}
+
 public TDestination Map<TSource, TDestination>(TSource source)
 {
     return source.Adapt<TSource, TDestination>(_config);
 }
-}
 
+}
