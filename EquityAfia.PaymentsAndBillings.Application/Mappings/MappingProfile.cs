@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EquityAfia.PaymentsAndBillings.Application.Mappings
 {
-    internal class MappingProfile
+     class MappingProfile
     {
     }
 }
