@@ -12,6 +12,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Mappings
         public MappingProfile()
         {
             // Define your mappings here
+
         }
     }
 }
