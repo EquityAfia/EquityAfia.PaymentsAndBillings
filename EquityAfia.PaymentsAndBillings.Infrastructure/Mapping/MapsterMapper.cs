@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
 {
     internal class MapsterMapper: IMapper
+
     {
     }
 }
