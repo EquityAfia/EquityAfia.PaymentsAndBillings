@@ -14,4 +14,5 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
         public MapsterMapper(TypeAdapterConfig config)
 
     }
+    _config = config;
 }
