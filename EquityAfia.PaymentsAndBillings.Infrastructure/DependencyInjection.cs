@@ -12,7 +12,8 @@ using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
 using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFolder;
 using EquityAfia.PaymentsAndBillings.Infrastructure.Repositories;
 using EquityAfia.PaymentsAndBillings.Application.Repositories;
-using EquityAfia.PaymentsAndBillings.Application.Mappings;
+using AutoMapper; // Ensure this is present
+using AutoMapper.Extensions.Microsoft.DependencyInjection; // Ensure this is present
 
 namespace EquityAfia.PaymentsAndBillings.Infrastructure
 {
@@ -37,8 +38,8 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure
             services.AddScoped<IStripeService, StripeService>();
             services.AddScoped<IStkService, StkService>();
 
-            // Register AutoMapper
-            services.AddAutoMapper(typeof(MappingProfile).Assembly);
+            // Register AutoMapper with explicit namespace
+            services.AddAutoMapper(typeof(EquityAfia.PaymentsAndBillings.Application.Mappings.MappingProfile).Assembly);
 
             return services;
         }
