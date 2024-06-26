@@ -12,6 +12,7 @@ using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
 using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFolder;
 using EquityAfia.PaymentsAndBillings.Infrastructure.Repositories;
 using EquityAfia.PaymentsAndBillings.Application.Repositories;
+using EquityAfia.PaymentsAndBillings.Application.Mappings;
 
 namespace EquityAfia.PaymentsAndBillings.Infrastructure
 {
@@ -37,6 +38,7 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure
             services.AddScoped<IStkService, StkService>();
 
             // Register AutoMapper
+            services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
             return services;
         }
