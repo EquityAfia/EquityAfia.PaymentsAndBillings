@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using EquityAfia.PaymentsAndBillings.Contracts.Billing;
+using EquityAfia.PaymentsAndBillings.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +14,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Mappings
         public MappingProfile()
         {
             // Define your mappings here
-
+            CreateMap<Billing, BillingDto>().ReverseMap();
         }
     }
 }
