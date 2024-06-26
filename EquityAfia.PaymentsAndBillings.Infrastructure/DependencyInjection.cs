@@ -36,6 +36,8 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure
             services.AddScoped<IStripeService, StripeService>();
             services.AddScoped<IStkService, StkService>();
 
+            // Register AutoMapper
+
             return services;
         }
     }
