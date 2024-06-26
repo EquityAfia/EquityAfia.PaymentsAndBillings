@@ -1,54 +1,59 @@
-﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces.Mapping;
+﻿using EquityAfia.PaymentsAndBillings.Contracts.Billing;
+using EquityAfia.PaymentsAndBillings.Domain.Entities;
 using Mapster;
-using MapsterMapper;
-using System;
 
 namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
 {
-    public class MapsterMapper : IMapper
+    public static class MapsterMapper
     {
-        private readonly TypeAdapterConfig _config;
+        private static TypeAdapterConfig _config;
 
-        public TypeAdapterConfig Config => _config;
-
-        public MapsterMapper(TypeAdapterConfig config)
+        static MapsterMapper()
         {
-            _config = config ?? throw new ArgumentNullException(nameof(config));
+            _config = new TypeAdapterConfig();
+
+            // Configure mappings
+            ConfigureMappings(_config);
         }
 
-        public TDestination Map<TDestination>(object source)
+        public static void ConfigureMappings(TypeAdapterConfig config)
         {
-            return _config.Adapt<TDestination>(source);
+            // Example of configuring a mapping
+            TypeAdapterConfig.GlobalSettings.Default.NameMatchingStrategy(NameMatchingStrategy.Flexible);
+
+            // Example of mapping configuration between types
+            config.ForType<BillingDto, Billing>()
+                .Map(dest => dest.SomeProperty, src => src.OtherProperty);
         }
 
-        public TDestination Map<TSource, TDestination>(TSource source)
+        public static TDestination Map<TDestination>(object source)
         {
-            return _config.Adapt<TSource, TDestination>(source);
+            return source.Adapt<TDestination>();
         }
 
-        public TDestination Map<TSource, TDestination>(TSource source, TDestination destination)
+        public static TDestination Map<TSource, TDestination>(TSource source)
         {
-            return _config.Adapt(source, destination);
+            return source.Adapt<TDestination>();
         }
 
-        public object Map(object source, Type sourceType, Type destinationType)
+        public static TDestination Map<TSource, TDestination>(TSource source, TDestination destination)
         {
-            return _config.Adapt(source, sourceType, destinationType);
+            return source.Adapt(destination);
         }
 
-        public object Map(object source, object destination, Type sourceType, Type destinationType)
+        public static object Map(object source, Type sourceType, Type destinationType)
         {
-            return _config.Adapt(source, destination, sourceType, destinationType);
+            return source.Adapt(destinationType, null, sourceType);
         }
 
-        public ITypeAdapterBuilder<TSource, TDestination> From<TSource, TDestination>(TSource source)
+        public static object Map(object source, object destination, Type sourceType, Type destinationType)
+        {
+            return source.Adapt(destination, sourceType, destinationType);
+        }
+
+        public static ITypeAdapterBuilder<TSource, TDestination> From<TSource, TDestination>(TSource source)
         {
             return _config.ForType<TSource, TDestination>();
-        }
-
-        public ITypeAdapterBuilder<TSource> From<TSource>()
-        {
-            return _config.ForType<TSource>();
         }
     }
 }
