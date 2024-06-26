@@ -42,7 +42,7 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure
             var config = TypeAdapterConfig.GlobalSettings;
             config.Scan(typeof(DependencyInjection).Assembly);
             services.AddSingleton(config);
-            services.AddScoped<IMapper, ServiceMapper>();
+            services.AddScoped<IMapper, MapsterMapper>();
 
             return services;
         }
