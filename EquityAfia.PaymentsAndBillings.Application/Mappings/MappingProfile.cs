@@ -1,21 +1,12 @@
-﻿using AutoMapper;
-using EquityAfia.PaymentsAndBillings.Contracts.Billing;
+﻿using EquityAfia.PaymentsAndBillings.Contracts.Billing;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Mapster;
 
-namespace EquityAfia.PaymentsAndBillings.Application.Mappings
+public class MappingProfile : IRegister
 {
-    public class MappingProfile : Profile
+    public void Register(TypeAdapterConfig config)
     {
-        public MappingProfile()
-        {
-            // Define your mappings here
-            CreateMap<Billing, BillingDto>().ReverseMap();
-           
-        }
+        config.NewConfig<Billing, BillingDto>();
+        config.NewConfig<BillingDto, Billing>();
     }
 }
