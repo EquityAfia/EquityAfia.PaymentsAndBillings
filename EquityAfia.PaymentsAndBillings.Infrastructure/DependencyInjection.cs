@@ -1,4 +1,4 @@
-﻿ 
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using EquityAfia.PaymentsAndBillings.Infrastructure.Data;
@@ -12,8 +12,8 @@ using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
 using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFolder;
 using EquityAfia.PaymentsAndBillings.Infrastructure.Repositories;
 using EquityAfia.PaymentsAndBillings.Application.Repositories;
-using AutoMapper;
-using Microsoft.Extensions.DependencyInjection; // Keep only this
+using Mapster;
+using MapsterMapper;
 
 namespace EquityAfia.PaymentsAndBillings.Infrastructure
 {
@@ -38,11 +38,11 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure
             services.AddScoped<IStripeService, StripeService>();
             services.AddScoped<IStkService, StkService>();
 
-            // Register AutoMapper with fully qualified name
-           // AutoMapper.Extensions.Microsoft.DependencyInjection.ServiceCollectionExtensions.AddAutoMapper(
-              //  services,
-              //  typeof(EquityAfia.PaymentsAndBillings.Application.Mappings.MappingProfile).Assembly
-           // );
+            // Register Mapster
+            var config = TypeAdapterConfig.GlobalSettings;
+            config.Scan(typeof(DependencyInjection).Assembly);
+            services.AddSingleton(config);
+            services.AddScoped<IMapper, ServiceMapper>();
 
             return services;
         }
