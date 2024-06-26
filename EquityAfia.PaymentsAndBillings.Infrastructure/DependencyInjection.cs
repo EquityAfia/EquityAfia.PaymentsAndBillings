@@ -23,28 +23,27 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             // Register DbContext
-            _ = services.AddDbContext<EquityAfiaDbContext>(options =>
+            services.AddDbContext<EquityAfiaDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             // Register repositories
-            _ = services.AddScoped<IBillingRepository, BillingRepository>();
+            services.AddScoped<IBillingRepository, BillingRepository>();
 
             // Register services
-            _ = services.AddScoped<IBillingService, BillingService>();
-            _ = services.AddScoped<IUserService, UserService>();
-            _ = services.AddScoped<IEPharmacyService, EPharmacyService>();
-            _ = services.AddScoped<IAppointmentService, AppointmentService>();
-            _ = services.AddScoped<IPaymentService, PaymentService>();
-            _ = services.AddScoped<IPaymentRepository, PaymentRepository>();
-            _ = services.AddScoped<IStripeService, StripeService>();
-            _ = services.AddScoped<IStkService, StkService>();
-            _ = services.AddSingleton<IMapper, MapsterMapper>(); // Register MapsterMapper as IMapper
+            services.AddScoped<IBillingService, BillingService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IEPharmacyService, EPharmacyService>();
+            services.AddScoped<IAppointmentService, AppointmentService>();
+            services.AddScoped<IPaymentService, PaymentService>();
+            services.AddScoped<IPaymentRepository, PaymentRepository>();
+            services.AddScoped<IStripeService, StripeService>();
+            services.AddScoped<IStkService, StkService>();
 
             // Register Mapster
             var config = TypeAdapterConfig.GlobalSettings;
-            _ = config.Scan(typeof(DependencyInjection).Assembly);
-            _ = services.AddSingleton(config);
-            _ = services.AddScoped<IMapper, EquityAfia.PaymentsAndBillings.Infrastructure.Mapping.MapsterMapper>();
+            config.Scan(typeof(DependencyInjection).Assembly);
+            services.AddSingleton(config);
+            services.AddScoped<IMapper, EquityAfia.PaymentsAndBillings.Infrastructure.Mapping.MapsterMapper>();
 
             return services;
         }
