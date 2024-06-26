@@ -15,7 +15,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Mappings
         {
             // Define your mappings here
             CreateMap<Billing, BillingDto>().ReverseMap();
-            CreateMap<Payment, PaymentDto>().ReverseMap();
+           
         }
     }
 }
