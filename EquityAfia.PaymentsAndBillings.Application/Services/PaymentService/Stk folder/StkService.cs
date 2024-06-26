@@ -1,14 +1,13 @@
-﻿using AutoMapper;
+﻿using Mapster;
+using Microsoft.Extensions.Configuration;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
-using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
-using RestSharp;
-using System;
-using System.Text;
+using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using System.Threading.Tasks;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
-using EquityAfia.PaymentsAndBillings.Application.Interfaces;
+using Newtonsoft.Json;
+using RestSharp;
+using System.Text;
 
 namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFolder
 {
@@ -17,14 +16,12 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
         private readonly IConfiguration _configuration;
         private readonly IBillingRepository _billingRepository;
         private readonly IPaymentRepository _paymentRepository;
-        private readonly IMapper _mapper;
 
-        public StkService(IConfiguration configuration, IBillingRepository billingRepository, IPaymentRepository paymentRepository, IMapper mapper)
+        public StkService(IConfiguration configuration, IBillingRepository billingRepository, IPaymentRepository paymentRepository)
         {
             _configuration = configuration;
             _billingRepository = billingRepository;
             _paymentRepository = paymentRepository;
-            _mapper = mapper;
         }
 
         public async Task<Payment> MakeStkPaymentAsync(int billingId, string mobileNumber)
