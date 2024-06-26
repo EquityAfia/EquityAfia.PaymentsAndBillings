@@ -38,7 +38,7 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure
             services.AddScoped<IStkService, StkService>();
 
             // Register AutoMapper
-            services.AddAutoMapper(typeof(MappingProfile).Assembly);
+            IServiceCollection serviceCollection = services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
             return services;
         }
