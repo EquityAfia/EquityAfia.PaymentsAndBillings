@@ -9,36 +9,36 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
     {
         private readonly TypeAdapterConfig _config;
 
-        public TypeAdapterConfig Config => throw new NotImplementedException();
+        public TypeAdapterConfig Config => _config;
 
         public MapsterMapper(TypeAdapterConfig config)
         {
-            _config = config;
+            _config = config ?? throw new ArgumentNullException(nameof(config));
         }
 
         public TDestination Map<TDestination>(object source)
         {
-            return source.Adapt<TDestination>();
+            return _config.Adapt<TDestination>(source);
         }
 
         public TDestination Map<TSource, TDestination>(TSource source)
         {
-            return source.Adapt<TDestination>();
+            return _config.Adapt<TSource, TDestination>(source);
         }
 
         public TDestination Map<TSource, TDestination>(TSource source, TDestination destination)
         {
-            return source.Adapt(destination);
+            return _config.Adapt(source, destination);
         }
 
         public object Map(object source, Type sourceType, Type destinationType)
         {
-            return source.Adapt(destinationType, null, sourceType);
+            return _config.Adapt(source, sourceType, destinationType);
         }
 
         public object Map(object source, object destination, Type sourceType, Type destinationType)
         {
-            return source.Adapt(destination, sourceType, destinationType);
+            return _config.Adapt(source, destination, sourceType, destinationType);
         }
 
         public ITypeAdapterBuilder<TSource, TDestination> From<TSource, TDestination>(TSource source)
@@ -46,9 +46,9 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
             return _config.ForType<TSource, TDestination>();
         }
 
-        public ITypeAdapterBuilder<TSource> From<TSource>(TSource source)
+        public ITypeAdapterBuilder<TSource> From<TSource>()
         {
-            throw new NotImplementedException();
+            return _config.ForType<TSource>();
         }
     }
 }
