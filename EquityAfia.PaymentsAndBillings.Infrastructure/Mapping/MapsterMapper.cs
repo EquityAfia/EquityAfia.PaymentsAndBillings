@@ -51,7 +51,7 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
             return source.Adapt(destination, sourceType, destinationType);
         }
 
-        public static ITypeAdapterBuilder<BillingDto, TDes> From<TSource, TDestination>(TSource source)
+        public static ITypeAdapterBuilder<BillingDto, TDest> From<TSource, TDestination>(TSource source)
         {
             return _config.ForType<TSource, TDestination>();
         }
