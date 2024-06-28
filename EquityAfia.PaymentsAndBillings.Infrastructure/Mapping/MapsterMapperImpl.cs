@@ -1,7 +1,5 @@
-﻿using EquityAfia.PaymentsAndBillings.Contracts.Billing;
-using EquityAfia.PaymentsAndBillings.Domain.Entities;
+﻿using System;
 using Mapster;
-using MapsterMapper;
 
 namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
 {
@@ -11,22 +9,7 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
 
         public MapsterMapperImpl(TypeAdapterConfig config)
         {
-            _config = config ?? throw new ArgumentNullException(nameof(config));
-            ConfigureMappings(_config);
-        }
-
-        private void ConfigureMappings(TypeAdapterConfig config)
-        {
-            TypeAdapterConfig.GlobalSettings.Default.NameMatchingStrategy(NameMatchingStrategy.Flexible);
-
-            config.NewConfig<BillingDto, Billing>()
-                .Map(dest => dest.BillingId, src => src.BillingId)
-                .Map(dest => dest.AmountBilled, src => src.AmountBilled)
-                .Map(dest => dest.CustomerId, src => src.CustomerId)
-                .Map(dest => dest.CustomerName, src => src.CustomerName)
-                .Map(dest => dest.CustomerEmail, src => src.CustomerEmail)
-                .Map(dest => dest.Products, src => src.Products)
-                .Map(dest => dest.Services, src => src.Services);
+            _config = config;
         }
 
         public TDestination Map<TDestination>(object source)
@@ -36,27 +19,29 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
 
         public TDestination Map<TSource, TDestination>(TSource source)
         {
-            return source.Adapt<TDestination>(_config); // Adapt to TDestination using _config
+            return source.Adapt<TSource, TDestination>(_config);
         }
 
         public TDestination Map<TSource, TDestination>(TSource source, TDestination destination)
         {
-            return source.Adapt(destination, _config); // Adapt source to destination using _config
+            return source.Adapt(destination, _config);
         }
 
         public object Map(object source, Type sourceType, Type destinationType)
         {
-            return source.Adapt(sourceType, destinationType, _config); // Adapt using sourceType, destinationType, _config
+            return source.Adapt(sourceType, destinationType, _config);
         }
 
         public object Map(object source, object destination, Type sourceType, Type destinationType)
         {
-            return source.Adapt(destination, sourceType, destinationType, _config); // Adapt using destination, sourceType, destinationType, _config
+            return source.Adapt(destination, sourceType, destinationType, _config);
         }
 
-        public ITypeAdapterBuilder<TSource, TDestination> From<TSource, TDestination>(TSource source)
+        public TypeAdapterConfig Config => _config;
+
+        public TypeAdapterBuilder<TSource> From<TSource>(TSource source)
         {
-            return _config.ForType<TSource, TDestination>(); // Create a new config for TSource and TDestination
+            return _config.From(source);
         }
     }
 }
