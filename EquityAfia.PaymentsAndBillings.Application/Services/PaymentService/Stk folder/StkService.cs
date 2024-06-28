@@ -1,11 +1,13 @@
-﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
+﻿using Mapster;
+using Microsoft.Extensions.Configuration;
+using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces;
-using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
+using EquityAfia.PaymentsAndBillings.Domain.Entities;
 using Newtonsoft.Json;
 using RestSharp;
 using System.Text;
-using EquityAfia.PaymentsAndBillings.Domain.Entities;
 
 namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFolder
 {
@@ -24,13 +26,11 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.Stk
 
         public async Task<Payment> MakeStkPaymentAsync(int billingId, string mobileNumber)
         {
-            var billingDto = await _billingRepository.GetBillingByIdAsync(billingId);
-            if (billingDto == null)
+            var billing = await _billingRepository.GetBillingByIdAsync(billingId);
+            if (billing == null)
             {
                 throw new Exception("Billing not found");
             }
-
-            var billing = MapsterMapper.Map<Billing>(billingDto);
 
             var amountToPay = billing.AmountBilled;
             var transactionId = Guid.NewGuid().ToString();
