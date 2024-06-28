@@ -33,3 +33,4 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
         {
             return source.Adapt(sourceType, destinationType, _config);
         }
+
