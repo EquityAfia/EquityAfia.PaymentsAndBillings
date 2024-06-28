@@ -43,6 +43,6 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
 
         public TypeAdapterConfig Config => _config;
 
-        public TypeAdapterBuilder<TSource> From<TSource>(TSource source) => TypeAdapterBuilder<TSource>..Map(_config);
+        public TypeAdapterBuilder<TSource> From<TSource>(TSource source) => TypeAdapterBuilder<TSource>.).Map(_config);
     }
 }
