@@ -3,15 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquityAfia.PaymentsAndBillings.Api", "EquityAfia.PaymentsAndBillings.Api\EquityAfia.PaymentsAndBillings.Api.csproj", "{F09C5672-CBFB-40C3-9338-FBF001A9EE19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EquityAfia.PaymentsAndBillings.Api", "EquityAfia.PaymentsAndBillings.Api\EquityAfia.PaymentsAndBillings.Api.csproj", "{F09C5672-CBFB-40C3-9338-FBF001A9EE19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquityAfia.PaymentsAndBillings.Contracts", "EquityAfia.PaymentsAndBillings.Contracts\EquityAfia.PaymentsAndBillings.Contracts.csproj", "{F18B7841-E00F-4CA2-A737-0AF5589E6644}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EquityAfia.PaymentsAndBillings.Contracts", "EquityAfia.PaymentsAndBillings.Contracts\EquityAfia.PaymentsAndBillings.Contracts.csproj", "{F18B7841-E00F-4CA2-A737-0AF5589E6644}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquityAfia.PaymentsAndBillings.Application", "EquityAfia.PaymentsAndBillings.Application\EquityAfia.PaymentsAndBillings.Application.csproj", "{61575DD0-4BFC-4BC3-A886-F4C1BA8CB659}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EquityAfia.PaymentsAndBillings.Application", "EquityAfia.PaymentsAndBillings.Application\EquityAfia.PaymentsAndBillings.Application.csproj", "{61575DD0-4BFC-4BC3-A886-F4C1BA8CB659}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquityAfia.PaymentsAndBillings.Infrastructure", "EquityAfia.PaymentsAndBillings.Infrastructure\EquityAfia.PaymentsAndBillings.Infrastructure.csproj", "{3489B4E9-3ADE-4AFA-9B37-DBE32019F1FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EquityAfia.PaymentsAndBillings.Infrastructure", "EquityAfia.PaymentsAndBillings.Infrastructure\EquityAfia.PaymentsAndBillings.Infrastructure.csproj", "{3489B4E9-3ADE-4AFA-9B37-DBE32019F1FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquityAfia.PaymentsAndBillings.Domain", "EquityAfia.PaymentsAndBillings.Domain\EquityAfia.PaymentsAndBillings.Domain.csproj", "{E814E09F-0C22-47EC-846E-077FA0178BF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EquityAfia.PaymentsAndBillings.Domain", "EquityAfia.PaymentsAndBillings.Domain\EquityAfia.PaymentsAndBillings.Domain.csproj", "{E814E09F-0C22-47EC-846E-077FA0178BF8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{024EE34A-346E-4979-8FD2-32084CD3851C}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
