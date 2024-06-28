@@ -42,9 +42,9 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure
 
             // Register Mapster
             var config = TypeAdapterConfig.GlobalSettings;
-            MapsterConfig.ConfigureMappings(config);
+            config.Scan(typeof(DependencyInjection).Assembly);
             services.AddSingleton(config);
-            services.AddScoped<IMapper, MapsterMapperImpl>();
+            services.AddScoped<Mapping.IMapper, MapsterMapperImpl>();
             return services;
         }
     }
