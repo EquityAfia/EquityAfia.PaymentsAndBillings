@@ -56,9 +56,9 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
             return source.Adapt(destination, sourceType, destinationType, _config);
         }
 
-        public static TypeAdapterSetter<TSource, TDestination> From<TSource, TDestination>(TSource source)
+        public static TypeAdapterBuilder<TSource, TDestination> From<TSource, TDestination>(TSource source)
         {
-            return _config.NewConfig<TSource, TDestination>().Compile();
+            return _config.NewConfig<TSource, TDestination>();
         }
     }
 }
