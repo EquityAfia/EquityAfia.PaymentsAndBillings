@@ -38,5 +38,5 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
             return source.Adapt(destination, sourceType, destinationType, _config);
         }
     }
-
+}
 
