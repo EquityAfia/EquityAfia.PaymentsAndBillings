@@ -18,5 +18,6 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
         public TDestination Map<TDestination>(object source)
 
 
+
         }
 }
