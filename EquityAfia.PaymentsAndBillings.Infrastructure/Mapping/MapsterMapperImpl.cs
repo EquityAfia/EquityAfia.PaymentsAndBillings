@@ -17,5 +17,6 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
         }
 
 
+
         }
 }
