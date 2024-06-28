@@ -21,7 +21,7 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
             TypeAdapterConfig.GlobalSettings.Default.NameMatchingStrategy(NameMatchingStrategy.Flexible);
 
             // Example of mapping configuration between types
-            config.ForType<BillingDto, Billing>()
+            config.NewConfig<BillingDto, Billing>()
                 .Map(dest => dest.BillingId, src => src.BillingId)
                 .Map(dest => dest.AmountBilled, src => src.AmountBilled)
                 .Map(dest => dest.CustomerId, src => src.CustomerId)
@@ -56,9 +56,9 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
             return source.Adapt(destination, sourceType, destinationType, _config);
         }
 
-        public static TypeAdapterBuilder<TSource, TDestination> From<TSource, TDestination>(TSource source)
+        public static TypeAdapterSetter<TSource, TDestination> From<TSource, TDestination>(TSource source)
         {
-            return _config.ForType<TSource, TDestination>();
+            return _config.NewConfig<TSource, TDestination>();
         }
     }
 }
