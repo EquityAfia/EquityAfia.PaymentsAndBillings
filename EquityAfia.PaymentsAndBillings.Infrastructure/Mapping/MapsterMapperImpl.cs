@@ -31,18 +31,37 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
                 .Map(dest => dest.Services, src => src.Services);
         }
 
-        public TDestination Map<TDestination>(object source) => source.Adapt<TDestination>(_config);
+        public TDestination Map<TDestination>(object source)
+        {
+            return source.Adapt<TDestination>(_config);
+        }
 
-        public TDestination Map<TSource, TDestination>(TSource source) => source.Adapt<TSource, TDestination>(_config);
+        public TDestination Map<TSource, TDestination>(TSource source)
+        {
+            return source.Adapt<TSource, TDestination>(_config);
+        }
 
-        public TDestination Map<TSource, TDestination>(TSource source, TDestination destination) => source.Adapt(destination, _config);
+        public TDestination Map<TSource, TDestination>(TSource source, TDestination destination)
+        {
+            return source.Adapt(destination, _config);
+        }
 
-        public object Map(object source, Type sourceType, Type destinationType) => source.Adapt(sourceType, destinationType, _config);
+        public object Map(object source, Type sourceType, Type destinationType)
+        {
+            return source.Adapt(sourceType, destinationType, _config);
+        }
 
-        public object Map(object source, object destination, Type sourceType, Type destinationType) => source.Adapt(destination, sourceType, destinationType, _config);
+        public object Map(object source, object destination, Type sourceType, Type destinationType)
+        {
+            return source.Adapt(destination, sourceType, destinationType, _config);
+        }
 
         public TypeAdapterConfig Config => _config;
 
-        public TypeAdapterBuilder<TSource> From<TSource>(TSource source) => TypeAdapterBuilder<TSource>.New().Map(_config);
+        public TypeAdapterBuilder<TSource> From<TSource>(TSource source)
+        {
+            
+            return TypeAdapterBuilder<TSource>.New().Map(_config);
+        }
     }
 }
