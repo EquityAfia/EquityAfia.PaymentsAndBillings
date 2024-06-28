@@ -25,4 +25,4 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
             return source.Adapt<TSource, TDestination>(_config);
         }
         public TDestination Map<TSource, TDestination>(TSource source, TDestination destination)
-
+        { 
