@@ -11,16 +11,13 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
         static MapsterMapper()
         {
             _config = new TypeAdapterConfig();
-            // Configure mappings
             ConfigureMappings(_config);
         }
 
         public static void ConfigureMappings(TypeAdapterConfig config)
         {
-            // Example of configuring a mapping
             TypeAdapterConfig.GlobalSettings.Default.NameMatchingStrategy(NameMatchingStrategy.Flexible);
 
-            // Example of mapping configuration between types
             config.NewConfig<BillingDto, Billing>()
                 .Map(dest => dest.BillingId, src => src.BillingId)
                 .Map(dest => dest.AmountBilled, src => src.AmountBilled)
