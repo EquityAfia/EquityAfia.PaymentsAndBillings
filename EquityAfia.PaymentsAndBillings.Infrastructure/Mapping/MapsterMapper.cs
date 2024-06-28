@@ -23,7 +23,7 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
 
             // Example of mapping configuration between types
             config.ForType<BillingDto, Billing>()
-                .Map(dest => dest.BillingD, src => src.BillingDto);
+                .Map(dest => dest.BillingDt, src => src.BillingDto);
         }
 
         public static TDestination Map<TDestination>(object source)
