@@ -13,5 +13,6 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
         private readonly TypeAdapterConfig _config;
 
 
+
     }
 }
