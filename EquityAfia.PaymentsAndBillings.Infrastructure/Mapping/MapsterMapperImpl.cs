@@ -60,8 +60,8 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
 
         public TypeAdapterBuilder<TSource> From<TSource>(TSource source)
         {
-            
-            return TypeAdapterBuilder<TSource>.New().Map(_config);
+            // Return the correct TypeAdapterBuilder<TSource>
+            return TypeAdapter.Adapt<TSource>(source).AdaptToTypeAdapterBuilder(_config);
         }
     }
 }
