@@ -2,7 +2,7 @@
 {
     public record BillingDto
     {
-        public int BillingId { get; init; }
+        public required int BillingId { get; init; }
         public string CustomerName { get; init; }
         public string CustomerId { get; init; }
         public string CustomerEmail { get; init; }
