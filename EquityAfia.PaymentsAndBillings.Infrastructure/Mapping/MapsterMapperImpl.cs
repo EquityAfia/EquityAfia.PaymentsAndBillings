@@ -2,6 +2,7 @@
 using EquityAfia.PaymentsAndBillings.Contracts.Billing;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
 using Mapster;
+using ServiceStack.Text;
 
 namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
 {
@@ -43,8 +44,8 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
 
         public TypeAdapterConfig Config => _config;
 
-        public TypeAdapterBuilder<TSource> From<TSource>(TSource source) =>
-            // Return the correct TypeAdapterBuilder<TSource>
-            TypeAdapter.Adapt<TSource>(source).AdaptToTypeAdapterBuilder(_config);
+        public TypeAdapterBuilder<TSource> From<TSource>(TSource source) => _config;
+        // Return the correct TypeAdapterBuilder<TSource>
+        // TypeAdapter.Adapt<TSource>(source).AdaptToTypeAdapterBuilder(_config);
     }
 }
