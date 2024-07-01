@@ -7,4 +7,5 @@ namespace EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing
     {
         Task<BillingDto> AddBillingWithServicesAsync(BillingDto billingDto);
     }
+
 }
