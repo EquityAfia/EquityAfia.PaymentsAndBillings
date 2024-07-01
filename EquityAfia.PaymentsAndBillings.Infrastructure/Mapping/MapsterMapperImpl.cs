@@ -2,7 +2,6 @@
 using EquityAfia.PaymentsAndBillings.Contracts.Billing;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
 using Mapster;
-using ServiceStack.Text;
 
 namespace EquityAfia.PaymentsAndBillings.Infrastructure.Mapping
 {
