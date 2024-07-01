@@ -1,5 +1,6 @@
 ﻿// Domain/Entities/Payment.cs
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EquityAfia.PaymentsAndBillings.Domain.Entities
 {
@@ -18,6 +19,8 @@ namespace EquityAfia.PaymentsAndBillings.Domain.Entities
         public DateTime CreatedAt { get; set; }
         public int? BillingId { get; set; }
         public Billing Billing { get; set; }
-        public object AmountToPay { get; set; }
+
+        // Changed type from object to decimal
+        public decimal AmountToPay { get; set; }
     }
 }
