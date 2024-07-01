@@ -8,7 +8,7 @@ namespace EquityAfia.PaymentsAndBillings.Contracts.Payment.Stk
 {
     public class StkPayment
     {
-        public string MobileNumber { get; set; }
-        public int BillingId { get; set; }
+        public required string MobileNumber { get; set; }
+        public required int BillingId { get; set; }
     }
 }
