@@ -36,8 +36,7 @@ namespace YourNamespace.Controllers
             try
             {
                 var billings = await _billingRepository.GetAllBillingsAsync();
-               if (billings == null || billings.Count == 0)
-
+                iif(billings == null || billings.Count == 0)
 
                     return NotFound(new { message = "No billings found" });
 
