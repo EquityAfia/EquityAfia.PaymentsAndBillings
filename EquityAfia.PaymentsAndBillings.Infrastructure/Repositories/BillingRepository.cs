@@ -32,7 +32,5 @@ namespace EquityAfia.PaymentsAndBillings.Application.Repositories
             return await _context.Billings
                 .FirstOrDefaultAsync(b => b.BillingId == billingId);
         }
-
-        
     }
 }
