@@ -9,6 +9,6 @@ namespace EquityAfia.PaymentsAndBillings.Contracts.Messages.UserManagement
     internal class GetUserDetailsResponse
     {
         public int UserId { get; set; }
-        public string UserName { get; set; }
+        public string Email { get; set; }
     }
 }
