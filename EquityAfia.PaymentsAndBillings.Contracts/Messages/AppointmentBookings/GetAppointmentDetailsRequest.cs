@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EquityAfia.PaymentsAndBillings.Contracts.Messages.AppointmentBookings
 {
-    internal class GetAppointmentDetailsRequest
+    interna class GetAppointmentDetailsRequest
     {
     }
 }
