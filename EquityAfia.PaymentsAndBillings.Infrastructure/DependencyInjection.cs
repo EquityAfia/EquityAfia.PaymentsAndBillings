@@ -1,21 +1,21 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using EquityAfia.PaymentsAndBillings.Infrastructure.Data;
-using EquityAfia.PaymentsAndBillings.Application.Interfaces;
-using EquityAfia.PaymentsAndBillings.Application.Services;
-using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
-using EquityAfia.PaymentsAndBillings.Application.Services.BillingService;
-using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService;
-using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StripeService;
+﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Payments.Stk;
-using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFolder;
-using EquityAfia.PaymentsAndBillings.Infrastructure.Repositories;
+using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using EquityAfia.PaymentsAndBillings.Application.Repositories;
-using Mapster;
-using MapsterMapper;
-using Microsoft.Win32;
+using EquityAfia.PaymentsAndBillings.Application.Services.BillingService;
+using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StkFolder;
+using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService.StripeService;
+using EquityAfia.PaymentsAndBillings.Application.Services.PaymentService;
+using EquityAfia.PaymentsAndBillings.Application.Services;
+using EquityAfia.PaymentsAndBillings.Contracts.Messages.AppointmentBookings;
+using EquityAfia.PaymentsAndBillings.Infrastructure.Data;
 using EquityAfia.PaymentsAndBillings.Infrastructure.Mapping;
+using EquityAfia.PaymentsAndBillings.Infrastructure.Repositories;
+using Mapster;
+using MassTransit;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 namespace EquityAfia.PaymentsAndBillings.Infrastructure
 {
@@ -45,6 +45,26 @@ namespace EquityAfia.PaymentsAndBillings.Infrastructure
             config.Scan(typeof(DependencyInjection).Assembly);
             services.AddSingleton(config);
             services.AddScoped<Mapping.IMapper, MapsterMapperImpl>();
+
+            // Register MassTransit
+            services.AddMassTransit(x =>
+            {
+                x.AddRequestClient<GetUserDetailsRequest>();
+                x.AddRequestClient<GetProductDetailsRequest>();
+                x.AddRequestClient<GetAppointmentDetailsRequest>();
+
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.Host(configuration["RabbitMQ:Host"], h =>
+                    {
+                        h.Username(configuration["RabbitMQ:Username"]);
+                        h.Password(configuration["RabbitMQ:Password"]);
+                    });
+                });
+            });
+
+            services.AddMassTransitHostedService();
+
             return services;
         }
     }
