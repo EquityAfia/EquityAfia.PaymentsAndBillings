@@ -9,6 +9,6 @@ namespace EquityAfia.PaymentsAndBillings.Contracts.Messages.CommodityMedicineMan
     public class GetProductDetailsResponse
     {
         public string ProductId { get; set; }
-
+        public int Quantity { get; set; }
     }
 }
