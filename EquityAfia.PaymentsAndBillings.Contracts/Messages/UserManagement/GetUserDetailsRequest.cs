@@ -8,5 +8,6 @@ namespace EquityAfia.PaymentsAndBillings.Contracts.Messages.UserManagement
 {
     internal class GetUserDetailsRequest
     {
+        public int UserId { get; set; }
     }
 }
