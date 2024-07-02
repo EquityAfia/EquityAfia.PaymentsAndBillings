@@ -8,5 +8,6 @@ namespace EquityAfia.PaymentsAndBillings.Contracts.Messages.AppointmentBookings
 {
   public   class GetAppointmentDetailsResponse
     {
+
     }
 }
