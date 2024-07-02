@@ -34,6 +34,7 @@
 
   <ItemGroup>
     <Folder Include="Messages\AppointmentBookings\" />
+    <Folder Include="Messages\CommodityMedicineManagement\" />
     <Folder Include="Messages\UserManagement\" />
   </ItemGroup>
 
