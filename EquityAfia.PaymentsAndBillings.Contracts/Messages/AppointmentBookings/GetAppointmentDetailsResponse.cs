@@ -10,5 +10,6 @@ namespace EquityAfia.PaymentsAndBillings.Contracts.Messages.AppointmentBookings
     {
         public int AppointmentId { get; set; }
         public int Quantity { get; init; }
+
     }
 }
