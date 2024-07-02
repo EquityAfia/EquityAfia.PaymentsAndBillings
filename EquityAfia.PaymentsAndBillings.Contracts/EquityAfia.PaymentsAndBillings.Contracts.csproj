@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Messages\" />
+    <Folder Include="Messages\UserManagement\" />
   </ItemGroup>
 
 </Project>
