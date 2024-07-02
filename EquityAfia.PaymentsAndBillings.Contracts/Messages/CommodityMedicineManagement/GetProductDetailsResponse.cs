@@ -8,6 +8,6 @@ namespace EquityAfia.PaymentsAndBillings.Contracts.Messages.CommodityMedicineMan
 {
     internal class GetProductDetailsResponse
     {
-
+        public string ProductId { get; set; }
     }
 }
