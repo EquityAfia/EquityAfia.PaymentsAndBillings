@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EquityAfia.PaymentsAndBillings.Contracts.Messages.UserManagement
 {
-    pub class GetUserDetailsRequest
+    publ class GetUserDetailsRequest
     {
         public int UserId { get; set; }
     }
