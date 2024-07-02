@@ -33,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Messages\AppointmentBookings\" />
     <Folder Include="Messages\UserManagement\" />
   </ItemGroup>
 
