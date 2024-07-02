@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EquityAfia.PaymentsAndBillings.Contracts.Messages.CommodityMedicineManagement
 {
-    internal class GetProductDetailsRequest
+    interna class GetProductDetailsRequest
     {
         public string ProductId { get; set; }
 
