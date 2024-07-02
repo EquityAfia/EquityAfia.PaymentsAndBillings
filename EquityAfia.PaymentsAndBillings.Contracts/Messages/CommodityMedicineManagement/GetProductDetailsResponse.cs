@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EquityAfia.PaymentsAndBillings.Contracts.Messages.CommodityMedicineManagement
 {
-    pub class GetProductDetailsResponse
+    publ class GetProductDetailsResponse
     {
         public string ProductId { get; set; }
     }
