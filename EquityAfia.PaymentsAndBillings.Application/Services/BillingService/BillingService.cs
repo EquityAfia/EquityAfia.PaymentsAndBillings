@@ -49,7 +49,6 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             var billing = new Billing
             {
                 BillingId = billingDto.BillingId,
-                CustomerName = UserDto.Name,
                 
                 
                 
