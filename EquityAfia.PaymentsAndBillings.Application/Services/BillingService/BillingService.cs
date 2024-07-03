@@ -30,7 +30,6 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
         public async Task<BillingDto> AddBillingWithServicesAsync(BillingDto billingDto)
         {
             // Retrieve user details
-            var UserDto = await _userService.GetUserByIdAsync(billingDto.CustomerId);
             
             
                 
