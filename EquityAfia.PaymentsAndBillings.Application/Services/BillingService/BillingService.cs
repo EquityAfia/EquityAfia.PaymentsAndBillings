@@ -32,8 +32,10 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
         {
             // Retrieve user details
             var userResponse = await _userClient.GetResponse<GetUserDetailsResponse>(new GetUserDetailsRequest
+            {
+                UserId = billingDto.CustomerId
+            });
         }
-    }
 }
 
 
