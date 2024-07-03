@@ -78,7 +78,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             return billingDto;
         }
 
-        public async Task<UserDto> GetUserByIdAsync(string userId)
+        
         
            
             
