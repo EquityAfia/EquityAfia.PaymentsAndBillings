@@ -84,7 +84,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             return await Task.FromResult(new UserDto
             {
                 UserId = userId,
-                Name = "Test User",
+                
                 
                 
             
