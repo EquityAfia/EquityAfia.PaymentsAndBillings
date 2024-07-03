@@ -21,6 +21,9 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             IRequestClient<GetProductDetailsRequest> productClient,
             IRequestClient<GetAppointmentDetailsRequest> appointmentClient,
              IBillingRepository billingRepository)
+        {
+
+        }
     }
 }
 
