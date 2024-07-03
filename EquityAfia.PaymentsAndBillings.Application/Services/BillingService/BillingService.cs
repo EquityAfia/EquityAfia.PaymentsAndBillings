@@ -39,8 +39,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             // Retrieve products from E-Pharmacy
             var products = await _ePharmacyService.GetProductsByCustomerIdAsync(billingDto.CustomerId);
             // Retrieve appointment charges
-            var charges = await _appointmentService.GetAppointmentChargesByCustomerIdAsync(billingDto.CustomerId);
-
+          
             
           
 
