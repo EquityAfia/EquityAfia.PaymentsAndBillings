@@ -31,7 +31,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
         {
             // Retrieve user details
             var UserDto = await _userService.GetUserByIdAsync(billingDto.CustomerId);
-            if (UserDto == null)
+            
             
                 
             
