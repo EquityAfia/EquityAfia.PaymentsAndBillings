@@ -21,7 +21,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             IAppointmentService appointmentService,
             IBillingRepository billingRepository)
         {
-            _userService = userService;
+           
             
             
             
