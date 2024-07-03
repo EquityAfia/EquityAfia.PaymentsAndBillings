@@ -61,7 +61,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 Services = billingDto.Services.Select(s => new Service
                 {
                     ServiceId = s.ServiceId,
-                    Quantity = s.Quantity,
+                    
                     
                 
                 
