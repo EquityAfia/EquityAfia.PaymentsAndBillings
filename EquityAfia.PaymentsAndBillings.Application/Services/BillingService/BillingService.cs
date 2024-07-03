@@ -57,7 +57,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 AmountBilled = (int)billingDto.AmountBilled,
                 PayBill = billingDto.PayBill,
                 AccNo = billingDto.AccNo,
-                PaymentStatus = billingDto.PaymentStatus,
+                
                 
                 
                     
