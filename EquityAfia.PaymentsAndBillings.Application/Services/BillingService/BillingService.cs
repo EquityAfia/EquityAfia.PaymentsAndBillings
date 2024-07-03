@@ -1,11 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using EquityAfia.PaymentsAndBillings.Application.Interfaces;
-using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
-using EquityAfia.PaymentsAndBillings.Contracts.AppointmentBooking;
-
-
+﻿
 
 
 
