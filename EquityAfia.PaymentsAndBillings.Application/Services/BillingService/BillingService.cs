@@ -13,8 +13,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
         private readonly IUserService _userService;
         private readonly IEPharmacyService _ePharmacyService;
         private readonly IAppointmentService _appointmentService;
-        private readonly IBillingRepository _billingRepository;
-
+        
        
             
             
