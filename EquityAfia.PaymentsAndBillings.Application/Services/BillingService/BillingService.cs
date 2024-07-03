@@ -79,7 +79,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                     {
                         ProductId = products.ProductId,
                         Quantity = products.Quantity,
-                        Price = products.Price
+                        Price =  products.Price
                     }
                 }
             };
