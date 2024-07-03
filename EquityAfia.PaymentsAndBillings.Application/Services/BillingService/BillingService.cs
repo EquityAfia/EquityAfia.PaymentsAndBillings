@@ -1,59 +1,53 @@
-﻿
-
-
-using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
+﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Contracts.Billing;
-using EquityAfia.PaymentsAndBillings.Contracts.Messages.AppointmentBookings;
-using EquityAfia.PaymentsAndBillings.Contracts.Messages.CommodityMedicineManagement;
 using EquityAfia.PaymentsAndBillings.Contracts.Messages.UserManagement;
+using EquityAfia.PaymentsAndBillings.Contracts.Messages.CommodityMedicineManagement;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
 using MassTransit;
+using EquityAfia.PaymentsAndBillings.Contracts.Messages.AppointmentBookings;
 
 namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
 {
     public class BillingService : IBillingService
     {
-        private readonly IRequestClient<GetUserDetailsRequest> _userClient;
-        private readonly IRequestClient<GetProductDetailsRequest> _productClient;
-        private readonly IRequestClient<GetAppointmentDetailsRequest> _appointmentClient;
+        private readonly IRequestClient<GetUserDetailsRequest> _userDetailsClient;
+        private readonly IRequestClient<GetProductDetailsRequest> _productDetailsClient;
+        private readonly IRequestClient<GetAppointmentDetailsRequest> _appointmentDetailsClient;
         private readonly IBillingRepository _billingRepository;
 
         public BillingService(
-            IRequestClient<GetUserDetailsRequest> userClient,
-            IRequestClient<GetProductDetailsRequest> productClient,
-            IRequestClient<GetAppointmentDetailsRequest> appointmentClient,
-             IBillingRepository billingRepository)
+            IRequestClient<GetUserDetailsRequest> userDetailsClient,
+            IRequestClient<GetProductDetailsRequest> productDetailsClient,
+            IRequestClient<GetAppointmentDetailsRequest> appointmentDetailsClient,
+            IBillingRepository billingRepository)
         {
-            _userClient = userClient;
-            _productClient = productClient;
-            _appointmentClient = appointmentClient;
+            _userDetailsClient = userDetailsClient;
+            _productDetailsClient = productDetailsClient;
+            _appointmentDetailsClient = appointmentDetailsClient;
             _billingRepository = billingRepository;
         }
+
         public async Task<BillingDto> AddBillingWithServicesAsync(BillingDto billingDto)
         {
             // Retrieve user details
-            var userResponse = await _userClient.GetResponse<GetUserDetailsResponse>(new GetUserDetailsRequest
-            {
-                UserId = billingDto.CustomerId
-            });
+            var userResponse = await _userDetailsClient.GetResponse<GetUserDetailsResponse>(new { billingDto.CustomerId });
             var userDto = userResponse.Message;
+            if (userDto == null)
             {
                 throw new Exception("User not found");
             }
-            // Retrieve products from CommodityMedicineManagement
-            var productResponse = await _productClient.GetResponse<GetProductDetailsResponse>(new GetProductDetailsRequest
-            {
-                ProductId = billingDto.CustomerId
-            });
+
+            // Retrieve products
+            var productResponse = await _productDetailsClient.GetResponse<GetProductDetailsResponse>(new { billingDto.CustomerId });
             var products = productResponse.Message;
+
             // Retrieve appointment charges
-            var appointmentResponse = await _appointmentClient.GetResponse<GetAppointmentDetailsResponse>(new GetAppointmentDetailsRequest
-            {
-                AppointmentId = billingDto.AppointmentId
-            });
+            var appointmentResponse = await _appointmentDetailsClient.GetResponse<GetAppointmentDetailsResponse>(new { billingDto.CustomerId });
             var charges = appointmentResponse.Message;
+
             // Calculate total amount billed
-            billingDto.AmountBilled = products.Price * products.Quantity + charges.AmountCharged;
+            billingDto.AmountBilled = products.Sum(p => p.Price * p.Quantity) + charges.Sum(c => c.AmountCharged);
+
             // Create Billing entity
             var billing = new Billing
             {
@@ -73,15 +67,12 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                     Quantity = s.Quantity,
                     AmountCharged = s.AmountCharged
                 }).ToList(),
-                Products = new List<Product>
+                Products = products.Select(p => new Product
                 {
-                    new Product
-                    {
-                        ProductId = products.ProductId,
-                        Quantity = products.Quantity,
-                        Price =  products.Price
-                    }
-                }
+                    ProductId = p.ProductId,
+                    Quantity = p.Quantity,
+                    Price = p.Price
+                }).ToList()
             };
 
             // Save billing to database
@@ -91,75 +82,3 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
         }
     }
 }
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
