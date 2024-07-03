@@ -1,60 +1,68 @@
 ﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Contracts.Billing;
+using EquityAfia.PaymentsAndBillings.Contracts.Messages.UserManagement;
+using EquityAfia.PaymentsAndBillings.Contracts.Messages.CommodityMedicineManagement;
+using EquityAfia.PaymentsAndBillings.Contracts.Messages.AppointmentBooking;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
+using MassTransit;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using EquityAfia.PaymentsAndBillings.Contracts.Messages.AppointmentBookings;
 
 namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
 {
     public class BillingService : IBillingService
     {
-        private readonly IUserService _userService;
-        private readonly IEPharmacyService _ePharmacyService;
-        private readonly IAppointmentService _appointmentService;
+        private readonly IRequestClient<GetUserDetailsRequest> _userDetailsClient;
+        private readonly IRequestClient<GetProductDetailsRequest> _productDetailsClient;
+        private readonly IRequestClient<GetAppointmentDetailsRequest> _appointmentDetailsClient;
         private readonly IBillingRepository _billingRepository;
 
         public BillingService(
-            IUserService userService,
-            IEPharmacyService ePharmacyService,
-            IAppointmentService appointmentService,
+            IRequestClient<GetUserDetailsRequest> userDetailsClient,
+            IRequestClient<GetProductDetailsRequest> productDetailsClient,
+            IRequestClient<GetAppointmentDetailsRequest> appointmentDetailsClient,
             IBillingRepository billingRepository)
         {
-            _userService = userService;
-            _ePharmacyService = ePharmacyService;
-            _appointmentService = appointmentService;
+            _userDetailsClient = userDetailsClient;
+            _productDetailsClient = productDetailsClient;
+            _appointmentDetailsClient = appointmentDetailsClient;
             _billingRepository = billingRepository;
         }
 
         public async Task<BillingDto> AddBillingWithServicesAsync(BillingDto billingDto)
         {
             // Retrieve user details
-            var UserDto = await _userService.GetUserByIdAsync(billingDto.CustomerId);
-            if (UserDto == null)
+            var userResponse = await _userDetailsClient.GetResponse<GetUserDetailsResponse>(new { billingDto.CustomerId });
+            var userDto = userResponse.Message;
+            if (userDto == null)
             {
                 throw new Exception("User not found");
             }
 
-            // Retrieve products from E-Pharmacy
-            var products = await _ePharmacyService.GetProductsByCustomerIdAsync(billingDto.CustomerId);
+            // Retrieve products
+            var productResponse = await _productDetailsClient.GetResponse<GetProductDetailsResponse>(new { billingDto.CustomerId });
+            var products = productResponse.Message.Products;
+
             // Retrieve appointment charges
-            var charges = await _appointmentService.GetAppointmentChargesByCustomerIdAsync(billingDto.CustomerId);
+            var appointmentResponse = await _appointmentDetailsClient.GetResponse<GetAppointmentDetailsResponse>(new { billingDto.CustomerId });
+            var charges = appointmentResponse.Message.AppointmentCharges;
 
             // Calculate total amount billed
-            billingDto.AmountBilled = products.Sum(p => p.Price * p.Quantity) + charges.Sum(c => c.Amount);
+            billingDto.AmountBilled = (int)(products.Sum(p => p.Price * p.Quantity) + charges.Sum(c => c.Amount));
 
-
-            // Create Billing entity
+            // Create Billing enti
             var billing = new Billing
             {
                 BillingId = billingDto.BillingId,
-                CustomerName = UserDto.Name,
+                CustomerName = userDto.Name,
                 CustomerId = billingDto.CustomerId,
-                CustomerEmail = UserDto.Email,
-                CustomerPhoneNumber = UserDto.PhoneNumber,
+                CustomerEmail = userDto.Email,
+                CustomerPhoneNumber = userDto.PhoneNumber,
                 AppointmentId = billingDto.AppointmentId,
-                AmountBilled = (int)billingDto.AmountBilled,
+                AmountBilled = billingDto.AmountBilled,
                 PayBill = billingDto.PayBill,
                 AccNo = billingDto.AccNo,
                 PaymentStatus = billingDto.PaymentStatus,
@@ -68,7 +76,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 {
                     ProductId = p.ProductId,
                     Quantity = p.Quantity,
-                    Price = p.Price
+                    Price = (int)p.Price
                 }).ToList()
             };
 
@@ -76,18 +84,6 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             await _billingRepository.AddAsync(billing);
 
             return billingDto;
-        }
-
-        public async Task<UserDto> GetUserByIdAsync(string userId)
-        {
-            // Mock implementation - replace with actual data retrieval logic
-            return await Task.FromResult(new UserDto
-            {
-                UserId = userId,
-                Name = "Test User",
-                Email = "test@example.com",
-                PhoneNumber = "123-456-7890"
-            });
         }
     }
 }

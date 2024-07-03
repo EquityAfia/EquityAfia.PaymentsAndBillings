@@ -1,16 +1,15 @@
-﻿using System;
+﻿using EquityAfia.PaymentsAndBillings.Contracts.Billing;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquityAfia.PaymentsAndBillings.Contracts.Messages.AppointmentBookings
+namespace EquityAfia.PaymentsAndBillings.Contracts.Messages.AppointmentBooking
 {
-  public   class GetAppointmentDetailsResponse
+    public class GetAppointmentDetailsResponse
     {
-        public int AppointmentId { get; set; }
-        public int Quantity { get; init; }
-        public decimal AmountCharged { get; init; }
-
+        public List<ChargeDto> AppointmentCharges { get; set; }
     }
 }
+
