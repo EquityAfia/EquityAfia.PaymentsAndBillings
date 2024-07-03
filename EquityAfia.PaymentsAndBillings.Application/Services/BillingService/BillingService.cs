@@ -88,6 +88,6 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 Email = "test@example.com",
                 PhoneNumber = "123-456-7890"
             });
-        }
+        
     
 
