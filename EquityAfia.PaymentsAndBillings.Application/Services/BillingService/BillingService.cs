@@ -66,7 +66,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 }).ToList(),
                 Products = products.Select(p => new Product
                 {
-                    ProductId = p.ProductId,
+                    
                     
                     
                 
