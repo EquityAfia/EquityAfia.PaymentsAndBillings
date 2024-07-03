@@ -23,6 +23,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
              IBillingRepository billingRepository)
         {
             _userClient = userClient;
+            _productClient = productClient;
         }
     }
 }
