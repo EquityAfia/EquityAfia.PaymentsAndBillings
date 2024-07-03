@@ -19,6 +19,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
         public BillingService(
             IRequestClient<GetUserDetailsRequest> userClient,
             IRequestClient<GetProductDetailsRequest> productClient,
+
     }
 }
 
