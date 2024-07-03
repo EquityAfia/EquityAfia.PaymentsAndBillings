@@ -41,7 +41,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             // Retrieve appointment charges
             var charges = await _appointmentService.GetAppointmentChargesByCustomerIdAsync(billingDto.CustomerId);
 
-            // Calculate total amount billed
+            
           
 
 
