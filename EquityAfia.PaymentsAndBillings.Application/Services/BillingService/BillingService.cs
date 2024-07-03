@@ -44,6 +44,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             {
                 ProductId = billingDto.CustomerId
             });
+            var products = productResponse.Message;
         }
 }
 
