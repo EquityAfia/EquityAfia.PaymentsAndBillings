@@ -64,8 +64,8 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                     Quantity = s.Quantity,
                     AmountCharged = s.AmountCharged
                 }).ToList(),
-                Products = products.Select(p => new Product
-                {
+                
+                
                     
                     
                     
