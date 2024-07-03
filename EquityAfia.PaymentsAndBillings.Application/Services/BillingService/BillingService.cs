@@ -41,6 +41,9 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             }
             // Retrieve products from CommodityMedicineManagement
             var productResponse = await _productClient.GetResponse<GetProductDetailsResponse>(new GetProductDetailsRequest
+            {
+                ProductId = billingDto.CustomerId
+            });
         }
 }
 
