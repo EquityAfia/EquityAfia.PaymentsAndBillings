@@ -33,7 +33,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             var UserDto = await _userService.GetUserByIdAsync(billingDto.CustomerId);
             if (UserDto == null)
             {
-                throw new Exception("User not found");
+                
             
 
             
