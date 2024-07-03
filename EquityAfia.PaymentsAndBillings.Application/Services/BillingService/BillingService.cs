@@ -22,7 +22,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             IBillingRepository billingRepository)
         {
             _userService = userService;
-            _ePharmacyService = ePharmacyService;
+            
             
             
         
