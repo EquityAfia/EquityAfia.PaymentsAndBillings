@@ -22,7 +22,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             IRequestClient<GetAppointmentDetailsRequest> appointmentClient,
              IBillingRepository billingRepository)
         {
-
+            _userClient = userClient;
         }
     }
 }
