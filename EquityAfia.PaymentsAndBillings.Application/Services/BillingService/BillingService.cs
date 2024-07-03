@@ -11,7 +11,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
     public class BillingService : IBillingService
     {
         private readonly IUserService _userService;
-        private readonly IEPharmacyService _ePharmacyService;
+        
         
         
        
