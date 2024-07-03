@@ -86,7 +86,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 UserId = userId,
                 Name = "Test User",
                 Email = "test@example.com",
-                PhoneNumber = "123-456-7890"
+                
             
         
     
