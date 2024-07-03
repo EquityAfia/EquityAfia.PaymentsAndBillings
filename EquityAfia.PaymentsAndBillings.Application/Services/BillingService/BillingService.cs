@@ -62,7 +62,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 {
                     ServiceId = s.ServiceId,
                     Quantity = s.Quantity,
-                    AmountCharged = s.AmountCharged
+                    
                 
                 
                 
