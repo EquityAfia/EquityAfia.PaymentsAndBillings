@@ -58,7 +58,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 PayBill = billingDto.PayBill,
                 AccNo = billingDto.AccNo,
                 PaymentStatus = billingDto.PaymentStatus,
-                Services = billingDto.Services.Select(s => new Service
+                
                 
                     
                     
