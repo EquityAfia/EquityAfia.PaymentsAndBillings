@@ -27,7 +27,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             _billingRepository = billingRepository;
         }
 
-        public async Task<BillingDto> AddBillingWithServicesAsync(BillingDto billingDto)
+       o)
         
            
             
