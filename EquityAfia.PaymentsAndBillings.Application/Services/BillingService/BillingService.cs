@@ -82,7 +82,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
         {
             // Mock implementation - replace with actual data retrieval logic
             return await Task.FromResult(new UserDto
-            {
+            
                 
                 
                 
