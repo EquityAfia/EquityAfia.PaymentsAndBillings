@@ -53,7 +53,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 CustomerId = billingDto.CustomerId,
                 CustomerEmail = UserDto.Email,
                 CustomerPhoneNumber = UserDto.PhoneNumber,
-                AppointmentId = billingDto.AppointmentId,
+                
                 
                 
                 
