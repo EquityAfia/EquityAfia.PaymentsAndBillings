@@ -45,6 +45,11 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 ProductId = billingDto.CustomerId
             });
             var products = productResponse.Message;
+            // Retrieve appointment charges
+            var appointmentResponse = await _appointmentClient.GetResponse<GetAppointmentDetailsResponse>(new GetAppointmentDetailsRequest
+            {
+                AppointmentId = billingDto.AppointmentId
+            });
         }
 }
 
