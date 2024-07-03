@@ -15,7 +15,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
         private readonly IAppointmentService _appointmentService;
         private readonly IBillingRepository _billingRepository;
 
-        public BillingService(
+       
             
             
             
