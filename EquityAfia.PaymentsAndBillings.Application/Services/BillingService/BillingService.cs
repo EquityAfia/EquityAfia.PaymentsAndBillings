@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
 {
     public class BillingService : IBillingService
-    {
+    
         
         
         
