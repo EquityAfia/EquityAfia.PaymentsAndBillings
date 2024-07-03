@@ -70,8 +70,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                     Quantity = p.Quantity,
                     Price = p.Price
                 }).ToList()
-            };
-
+           
             
             
 
