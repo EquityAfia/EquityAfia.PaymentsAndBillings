@@ -36,7 +36,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 throw new Exception("User not found");
             }
 
-            // Retrieve products from E-Pharmacy
+            
             
             
           
