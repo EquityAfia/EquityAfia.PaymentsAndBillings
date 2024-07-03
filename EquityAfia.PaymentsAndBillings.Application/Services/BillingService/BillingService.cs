@@ -87,7 +87,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 Name = "Test User",
                 Email = "test@example.com",
                 PhoneNumber = "123-456-7890"
-            });
+            })
         
     
 
