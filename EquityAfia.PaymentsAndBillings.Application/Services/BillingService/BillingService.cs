@@ -45,7 +45,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             billingDto.AmountBilled = products.Sum(p => p.Price * p.Quantity) + charges.Sum(c => c.Amount);
 
 
-            // Create Billing entity
+            
             
             
                 
