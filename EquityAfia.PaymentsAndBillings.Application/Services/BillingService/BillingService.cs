@@ -19,7 +19,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             IUserService userService,
             IEPharmacyService ePharmacyService,
             IAppointmentService appointmentService,
-            IBillingRepository billingRepository)
+            
         
            
             
