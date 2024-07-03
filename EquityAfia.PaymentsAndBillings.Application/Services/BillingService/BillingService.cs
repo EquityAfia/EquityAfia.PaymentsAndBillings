@@ -72,7 +72,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 }).ToList()
             };
 
-            // Save billing to database
+            
             
 
             
