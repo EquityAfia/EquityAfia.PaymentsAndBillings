@@ -89,5 +89,5 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 PhoneNumber = "123-456-7890"
             });
         }
-    }
+    
 
