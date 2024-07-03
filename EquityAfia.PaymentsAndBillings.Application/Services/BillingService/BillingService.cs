@@ -12,6 +12,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
     {
         private readonly IRequestClient<GetUserDetailsRequest> _userClient;
         private readonly IRequestClient<GetProductDetailsRequest> _productClient;
+
     }
 }
 
