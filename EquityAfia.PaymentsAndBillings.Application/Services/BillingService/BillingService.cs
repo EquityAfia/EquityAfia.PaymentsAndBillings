@@ -50,6 +50,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             {
                 AppointmentId = billingDto.AppointmentId
             });
+            var charges = appointmentResponse.Message;
         }
 }
 
