@@ -85,7 +85,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             {
                 UserId = userId,
                 Name = "Test User",
-                E
+                
                 
             
         
