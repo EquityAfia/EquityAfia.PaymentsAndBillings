@@ -42,7 +42,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             var charges = await _appointmentService.GetAppointmentChargesByCustomerIdAsync(billingDto.CustomerId);
 
             // Calculate total amount billed
-            billingDto.AmountBilled = products.Sum(p => p.Price * p.Quantity) + charges.Sum(c => c.Amount);
+          
 
 
             
