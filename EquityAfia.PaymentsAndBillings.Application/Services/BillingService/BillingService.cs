@@ -25,6 +25,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             _userClient = userClient;
             _productClient = productClient;
             _appointmentClient = appointmentClient;
+
         }
     }
 }
