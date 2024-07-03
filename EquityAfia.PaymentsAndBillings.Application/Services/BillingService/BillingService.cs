@@ -52,7 +52,6 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 CustomerName = UserDto.Name,
                 CustomerId = billingDto.CustomerId,
                 CustomerEmail = UserDto.Email,
-                CustomerPhoneNumber = UserDto.PhoneNumber,
                 
                 
                 
