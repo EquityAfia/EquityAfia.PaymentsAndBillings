@@ -10,6 +10,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
     public class BillingService : IBillingService
     {
         private readonly IRequestClient<GetUserDetailsRequest> _userClient;
+
     }
 }
 
