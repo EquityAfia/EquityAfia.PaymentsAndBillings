@@ -46,7 +46,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
 
 
             // Create Billing entity
-            var billing = new Billing
+            
             
                 
                 
