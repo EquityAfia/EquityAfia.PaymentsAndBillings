@@ -8,7 +8,7 @@
         public string CustomerEmail { get; init; }
         public string CustomerPhoneNumber { get; init; }
         public int AppointmentId { get; init; }
-        public decimal AmountBilled { get; set; } // Changed from int to decimal
+        public int AmountBilled { get; set; } // Changed from decimal  to int
         public bool PayBill { get; init; }
         public int AccNo { get; init; }
         public string PaymentStatus { get; init; }

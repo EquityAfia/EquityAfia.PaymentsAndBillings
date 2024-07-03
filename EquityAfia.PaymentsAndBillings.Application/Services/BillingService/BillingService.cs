@@ -1,9 +1,14 @@
-﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
+﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces;
+using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Contracts.Billing;
 using EquityAfia.PaymentsAndBillings.Contracts.Messages.UserManagement;
 using EquityAfia.PaymentsAndBillings.Contracts.Messages.CommodityMedicineManagement;
+using EquityAfia.PaymentsAndBillings.Contracts.Messages.AppointmentBooking;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
 using MassTransit;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 using EquityAfia.PaymentsAndBillings.Contracts.Messages.AppointmentBookings;
 
 namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
@@ -39,16 +44,16 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
 
             // Retrieve products
             var productResponse = await _productDetailsClient.GetResponse<GetProductDetailsResponse>(new { billingDto.CustomerId });
-            var products = productResponse.Message;
+            var products = productResponse.Message.Products;
 
             // Retrieve appointment charges
             var appointmentResponse = await _appointmentDetailsClient.GetResponse<GetAppointmentDetailsResponse>(new { billingDto.CustomerId });
-            var charges = appointmentResponse.Message;
+            var charges = appointmentResponse.Message.AppointmentCharges;
 
             // Calculate total amount billed
-            billingDto.AmountBilled = products.Sum(p => p.Price * p.Quantity) + charges.Sum(c => c.AmountCharged);
+            billingDto.AmountBilled = (int)(products.Sum(p => p.Price * p.Quantity) + charges.Sum(c => c.Amount));
 
-            // Create Billing entity
+            // Create Billing enti
             var billing = new Billing
             {
                 BillingId = billingDto.BillingId,
@@ -57,7 +62,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 CustomerEmail = userDto.Email,
                 CustomerPhoneNumber = userDto.PhoneNumber,
                 AppointmentId = billingDto.AppointmentId,
-                AmountBilled = (int)billingDto.AmountBilled,
+                AmountBilled = billingDto.AmountBilled,
                 PayBill = billingDto.PayBill,
                 AccNo = billingDto.AccNo,
                 PaymentStatus = billingDto.PaymentStatus,
@@ -71,7 +76,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 {
                     ProductId = p.ProductId,
                     Quantity = p.Quantity,
-                    Price = p.Price
+                    Price = (int)p.Price
                 }).ToList()
             };
 
