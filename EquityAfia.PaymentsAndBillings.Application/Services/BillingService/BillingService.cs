@@ -2,6 +2,7 @@
 
 
 using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
+using EquityAfia.PaymentsAndBillings.Contracts.Billing;
 using EquityAfia.PaymentsAndBillings.Contracts.Messages.AppointmentBookings;
 using EquityAfia.PaymentsAndBillings.Contracts.Messages.CommodityMedicineManagement;
 using EquityAfia.PaymentsAndBillings.Contracts.Messages.UserManagement;
@@ -27,6 +28,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             _appointmentClient = appointmentClient;
             _billingRepository = billingRepository;
         }
+        public async Task<BillingDto> AddBillingWithServicesAsync(BillingDto billingDto)
     }
 }
 
