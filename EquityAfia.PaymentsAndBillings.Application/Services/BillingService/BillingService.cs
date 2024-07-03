@@ -36,7 +36,9 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 UserId = billingDto.CustomerId
             });
             var userDto = userResponse.Message;
-            { }
+            {
+                throw new Exception("User not found");
+            }
         }
 }
 
