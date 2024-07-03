@@ -34,7 +34,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             if (UserDto == null)
             {
                 throw new Exception("User not found");
-            }
+            
 
             
             
