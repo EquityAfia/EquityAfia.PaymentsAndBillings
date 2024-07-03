@@ -6,6 +6,7 @@ using EquityAfia.PaymentsAndBillings.Contracts.Billing;
 using EquityAfia.PaymentsAndBillings.Contracts.Messages.AppointmentBookings;
 using EquityAfia.PaymentsAndBillings.Contracts.Messages.CommodityMedicineManagement;
 using EquityAfia.PaymentsAndBillings.Contracts.Messages.UserManagement;
+using EquityAfia.PaymentsAndBillings.Domain.Entities;
 using MassTransit;
 
 namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
@@ -51,6 +52,45 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 AppointmentId = billingDto.AppointmentId
             });
             var charges = appointmentResponse.Message;
+            // Calculate total amount billed
+            billingDto.AmountBilled = products.Price * products.Quantity + charges.AmountCharged;
+            // Create Billing entity
+            var billing = new Billing
+            {
+                BillingId = billingDto.BillingId,
+                CustomerName = userDto.Name,
+                CustomerId = billingDto.CustomerId,
+                CustomerEmail = userDto.Email,
+                CustomerPhoneNumber = userDto.PhoneNumber,
+                AppointmentId = billingDto.AppointmentId,
+                AmountBilled = (int)billingDto.AmountBilled,
+                PayBill = billingDto.PayBill,
+                AccNo = billingDto.AccNo,
+                PaymentStatus = billingDto.PaymentStatus,
+                Services = billingDto.Services.Select(s => new Service
+                {
+                    ServiceId = s.ServiceId,
+                    Quantity = s.Quantity,
+                    AmountCharged = s.AmountCharged
+                }).ToList(),
+                Products = new List<Product>
+                {
+                    new Product
+                    {
+                        ProductId = products.ProductId,
+                        Quantity = products.Quantity,
+                        Price = products.Price
+                    }
+                }
+            };
+
+            // Save billing to database
+            await _billingRepository.AddAsync(billing);
+
+            return billingDto;
+        }
+    }
+}
         }
 }
 
