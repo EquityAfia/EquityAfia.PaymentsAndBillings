@@ -1,4 +1,5 @@
 ﻿using EquityAfia.PaymentsAndBillings.Contracts.Billing;
+using EquityAfia.SharedContract.SharedDtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

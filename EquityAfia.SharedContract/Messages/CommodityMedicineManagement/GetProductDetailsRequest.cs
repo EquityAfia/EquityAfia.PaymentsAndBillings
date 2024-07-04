@@ -1,4 +1,4 @@
-﻿namespace EquityAfia.PaymentsAndBillings.Contracts.Messages.CommodityMedicineManagement
+﻿namespace EquityAfia.SharedContract.Messages.UserManagement
 {
     public class GetProductDetailsRequest
     {

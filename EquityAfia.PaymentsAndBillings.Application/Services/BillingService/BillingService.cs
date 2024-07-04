@@ -1,15 +1,8 @@
-﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces;
-using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
+﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces.Billing;
 using EquityAfia.PaymentsAndBillings.Contracts.Billing;
-using EquityAfia.PaymentsAndBillings.Contracts.Messages.UserManagement;
-using EquityAfia.PaymentsAndBillings.Contracts.Messages.CommodityMedicineManagement;
-using EquityAfia.PaymentsAndBillings.Contracts.Messages.AppointmentBooking;
 using EquityAfia.PaymentsAndBillings.Domain.Entities;
+using EquityAfia.SharedContract.Messages.UserManagement;
 using MassTransit;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using EquityAfia.PaymentsAndBillings.Contracts.Messages.AppointmentBookings;
 
 namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
 {
