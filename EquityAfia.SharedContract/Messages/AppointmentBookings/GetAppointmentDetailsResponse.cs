@@ -1,11 +1,6 @@
-﻿using EquityAfia.PaymentsAndBillings.Contracts.Billing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EquityAfia.SharedContract.SharedDtos;
 
-namespace EquityAfia.PaymentsAndBillings.Contracts.Messages.AppointmentBooking
+namespace EquityAfia.SharedContract.Messages.UserManagement
 {
     public class GetAppointmentDetailsResponse
     {

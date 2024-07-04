@@ -33,6 +33,7 @@
     <ProjectReference Include="..\EquityAfia.PaymentsAndBillings.Application\EquityAfia.PaymentsAndBillings.Application.csproj" />
     <ProjectReference Include="..\EquityAfia.PaymentsAndBillings.Contracts\EquityAfia.PaymentsAndBillings.Contracts.csproj" />
     <ProjectReference Include="..\EquityAfia.PaymentsAndBillings.Infrastructure\EquityAfia.PaymentsAndBillings.Infrastructure.csproj" />
+    <ProjectReference Include="..\EquityAfia.SharedContract\EquityAfia.SharedContract.csproj" />
   </ItemGroup>
 
 </Project>

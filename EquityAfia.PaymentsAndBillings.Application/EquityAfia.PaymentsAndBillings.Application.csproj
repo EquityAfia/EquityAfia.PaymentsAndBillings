@@ -32,6 +32,7 @@
   <ItemGroup>
     <ProjectReference Include="..\EquityAfia.PaymentsAndBillings.Contracts\EquityAfia.PaymentsAndBillings.Contracts.csproj" />
     <ProjectReference Include="..\EquityAfia.PaymentsAndBillings.Domain\EquityAfia.PaymentsAndBillings.Domain.csproj" />
+    <ProjectReference Include="..\EquityAfia.SharedContract\EquityAfia.SharedContract.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,6 @@
 ﻿using EquityAfia.PaymentsAndBillings.Application.Interfaces;
 using EquityAfia.PaymentsAndBillings.Contracts.Billing;
+using EquityAfia.SharedContract.SharedDtos;
 using System.Net.Http.Json;
 
 
