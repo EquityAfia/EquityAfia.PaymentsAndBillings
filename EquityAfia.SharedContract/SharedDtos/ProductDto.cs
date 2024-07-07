@@ -1,5 +1,6 @@
 ﻿namespace EquityAfia.SharedContract.SharedDtos
 {
+    //commodity/e pharmacy products
     public class ProductDto
     {
         public int ProductId { get; set; }
