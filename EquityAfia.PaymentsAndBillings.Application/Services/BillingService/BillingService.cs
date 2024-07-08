@@ -76,7 +76,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
                 }).ToList()
             };
 
-            // Save billing to database
+            // Saving billing to database
             await _billingRepository.AddAsync(billing);
 
             return billingDto;
