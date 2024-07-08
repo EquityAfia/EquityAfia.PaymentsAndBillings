@@ -44,9 +44,12 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             var charges = appointmentResponse.Message.AppointmentCharges;
 
             // Calculate total amount billed
-            billingDto.AmountBilled = (int)(products.Sum(p => p.Price * p.Quantity) + charges.Sum(c => c.Amount));
+            var totalAmountBilled = products.Sum(p => p.Price * p.Quantity) + charges.Sum(c => c.Amount);
 
-            // Create Billing enti
+            // Create a new instance of BillingDto with updated AmountBilled
+            billingDto = billingDto with { AmountBilled = (int)totalAmountBilled };
+
+            // Create Billing entity
             var billing = new Billing
             {
                 BillingId = billingDto.BillingId,
