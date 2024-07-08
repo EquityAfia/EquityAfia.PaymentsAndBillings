@@ -3,17 +3,17 @@
     public record BillingDto
     {
         public required int BillingId { get; init; }
-        public string CustomerName { get; init; }
-        public string CustomerId { get; init; }
-        public string CustomerEmail { get; init; }
-        public string CustomerPhoneNumber { get; init; }
+        public required string CustomerName { get; init; }
+        public required string CustomerId { get; init; }
+        public required string CustomerEmail { get; init; }
+        public required string CustomerPhoneNumber { get; init; }
         public int AppointmentId { get; init; }
         public int AmountBilled { get; set; } // Changed from decimal  to int
         public bool PayBill { get; init; }
-        public int AccNo { get; init; }
-        public string PaymentStatus { get; init; }
-        public List<ServiceDto> Services { get; init; }
-        public List<ProductDto> Products { get; init; }
+        public required int AccNo { get; init; }
+        public required string PaymentStatus { get; init; }
+        public required List<ServiceDto> Services { get; init; }
+        public required List<ProductDto> Products { get; init; }
     }
 
     public record ServiceDto
@@ -25,7 +25,7 @@
 
     public record ProductDto
     {
-        public string ProductId { get; set; }
+        public required string ProductId { get; set; }
         public int Quantity { get; set; }
         public int Price { get; set; }
     }
