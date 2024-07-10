@@ -35,4 +35,8 @@
     <ProjectReference Include="..\EquityAfia.SharedContract\EquityAfia.SharedContract.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="CommandsAndQueries\" />
+  </ItemGroup>
+
 </Project>
