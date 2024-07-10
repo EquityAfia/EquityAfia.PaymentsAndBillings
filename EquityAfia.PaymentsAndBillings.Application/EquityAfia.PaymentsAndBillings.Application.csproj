@@ -36,7 +36,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CommandsAndQueries\" />
+    <Folder Include="CommandsAndQueries\BillingsCommandsAndQQueris\" />
+    <Folder Include="CommandsAndQueries\PaymentCommandsAndQueries\" />
   </ItemGroup>
 
 </Project>
