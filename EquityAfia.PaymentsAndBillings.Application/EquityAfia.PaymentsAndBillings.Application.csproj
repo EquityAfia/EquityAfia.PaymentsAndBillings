@@ -37,6 +37,7 @@
 
   <ItemGroup>
     <Folder Include="CommandsAndQueries\BillingsCommandsAndQQueris\Commands\" />
+    <Folder Include="CommandsAndQueries\BillingsCommandsAndQQueris\Commons\" />
     <Folder Include="CommandsAndQueries\PaymentCommandsAndQueries\" />
   </ItemGroup>
 
