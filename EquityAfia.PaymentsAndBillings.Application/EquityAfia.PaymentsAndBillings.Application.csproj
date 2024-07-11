@@ -41,6 +41,7 @@
     <Folder Include="CommandsAndQueries\BillingsCommandsAndQQueris\Queries\" />
     <Folder Include="CommandsAndQueries\PaymentCommandsAndQueries\Commands\" />
     <Folder Include="CommandsAndQueries\PaymentCommandsAndQueries\Common\" />
+    <Folder Include="CommandsAndQueries\PaymentCommandsAndQueries\Queries\" />
   </ItemGroup>
 
 </Project>
