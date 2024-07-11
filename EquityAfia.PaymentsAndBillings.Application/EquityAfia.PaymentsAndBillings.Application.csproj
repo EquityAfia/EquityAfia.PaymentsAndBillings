@@ -40,7 +40,7 @@
     <Folder Include="CommandsAndQueries\BillingsCommandsAndQQueris\Commons\" />
     <Folder Include="CommandsAndQueries\BillingsCommandsAndQQueris\Queries\" />
     <Folder Include="CommandsAndQueries\PaymentCommandsAndQueries\Commands\" />
-    <Folder Include="CommandsAndQueries\PaymentCommandsAndQueries\NewFolder\" />
+    <Folder Include="CommandsAndQueries\PaymentCommandsAndQueries\Common\" />
   </ItemGroup>
 
 </Project>
