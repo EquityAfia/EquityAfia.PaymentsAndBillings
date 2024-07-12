@@ -36,9 +36,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CommandsAndQueries\BillingsCommandsAndQQueris\Commands\" />
-    <Folder Include="CommandsAndQueries\BillingsCommandsAndQQueris\Commons\" />
-    <Folder Include="CommandsAndQueries\BillingsCommandsAndQQueris\Queries\" />
+    <Folder Include="CommandsAndQueries\BillingsCommandsAndQueris\Commands\" />
+    <Folder Include="CommandsAndQueries\BillingsCommandsAndQueris\Commons\" />
+    <Folder Include="CommandsAndQueries\BillingsCommandsAndQueris\Queries\" />
     <Folder Include="CommandsAndQueries\PaymentCommandsAndQueries\Commands\" />
     <Folder Include="CommandsAndQueries\PaymentCommandsAndQueries\Common\" />
     <Folder Include="CommandsAndQueries\PaymentCommandsAndQueries\Queries\" />
