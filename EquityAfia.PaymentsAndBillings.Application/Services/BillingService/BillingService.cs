@@ -33,7 +33,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             var userDto = userResponse.Message;
             if (userDto == null)
             {
-                throw new Exception("User not found");
+                throw new Exception("User not registered.Please register");
             }
 
             // Retrieve products
