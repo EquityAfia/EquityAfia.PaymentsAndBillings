@@ -7,7 +7,7 @@ using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
-
+//namespace for userService
 namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
 {
     public class UserService : IUserService
