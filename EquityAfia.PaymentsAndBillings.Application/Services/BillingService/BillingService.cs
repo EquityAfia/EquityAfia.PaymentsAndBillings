@@ -33,7 +33,7 @@ namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
             var userDto = userResponse.Message;
             if (userDto == null)
             {
-                throw new Exception("You are not authenticated");
+                throw new Exception("You are not found!");
             }
 
             // Retrieve products
