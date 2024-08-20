@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace EquityAfia.SharedContract.Messages.UserManagement
 
 {
-    public class GetUserDetailsRequest
+    public abstract class GetUserDetailsRequest
     {
         public int UserId { get; set; }
     }
