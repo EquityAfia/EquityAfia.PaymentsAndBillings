@@ -6,7 +6,7 @@ using MassTransit;
 
 namespace EquityAfia.PaymentsAndBillings.Application.Services.BillingService
 {
-    //implementation of interface methods from IBillingService
+    // Class implementation of interface methods from IBillingService
     public class BillingService : IBillingService
     {
         private readonly IRequestClient<GetUserDetailsRequest> _userDetailsClient;
